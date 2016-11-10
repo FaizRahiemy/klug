@@ -7,17 +7,18 @@ package View;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JList;
 
 /**
  *
  * @author faiz
  */
-public class Login extends javax.swing.JFrame implements View{
+public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    public PilihKelasMateriMahasiswa() {
         initComponents();
     }
 
@@ -31,17 +32,16 @@ public class Login extends javax.swing.JFrame implements View{
     private void initComponents() {
 
         backgroundKlug1 = new img.BackgroundKlug();
-        btn_login = new javax.swing.JButton();
-        password = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        username = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         close1 = new javax.swing.JLabel();
+        btn_back = new javax.swing.JButton();
+        btn_pilih = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        pilihKelas = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setUndecorated(true);
 
@@ -49,29 +49,9 @@ public class Login extends javax.swing.JFrame implements View{
         backgroundKlug1.setMinimumSize(new java.awt.Dimension(800, 600));
         backgroundKlug1.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        btn_login.setBackground(new java.awt.Color(255, 255, 255));
-        btn_login.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        btn_login.setForeground(new java.awt.Color(238, 95, 1));
-        btn_login.setText("Login");
-        btn_login.setBorderPainted(false);
-
-        password.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        password.setForeground(new java.awt.Color(238, 95, 1));
-
-        jLabel1.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(238, 95, 1));
-        jLabel1.setText("Username");
-
-        jLabel2.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(238, 95, 1));
-        jLabel2.setText("Password");
-
-        username.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        username.setForeground(new java.awt.Color(238, 95, 1));
-
         jLabel3.setFont(new java.awt.Font("Aller", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Login");
+        jLabel3.setText("Materi");
 
         close.setBackground(new java.awt.Color(255, 255, 255));
         close.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
@@ -91,6 +71,28 @@ public class Login extends javax.swing.JFrame implements View{
             }
         });
 
+        btn_back.setBackground(new java.awt.Color(255, 255, 255));
+        btn_back.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_back.setForeground(new java.awt.Color(238, 95, 1));
+        btn_back.setText("Kembali");
+        btn_back.setBorderPainted(false);
+
+        btn_pilih.setBackground(new java.awt.Color(255, 255, 255));
+        btn_pilih.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_pilih.setForeground(new java.awt.Color(238, 95, 1));
+        btn_pilih.setText("Pilih");
+        btn_pilih.setBorderPainted(false);
+
+        jLabel1.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(238, 95, 1));
+        jLabel1.setText("Pilih Kelas");
+
+        pilihKelas.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        pilihKelas.setForeground(new java.awt.Color(238, 95, 1));
+        pilihKelas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        pilihKelas.setSelectionBackground(new java.awt.Color(238, 95, 1));
+        jScrollPane1.setViewportView(pilihKelas);
+
         javax.swing.GroupLayout backgroundKlug1Layout = new javax.swing.GroupLayout(backgroundKlug1);
         backgroundKlug1.setLayout(backgroundKlug1Layout);
         backgroundKlug1Layout.setHorizontalGroup(
@@ -98,23 +100,22 @@ public class Login extends javax.swing.JFrame implements View{
             .addGroup(backgroundKlug1Layout.createSequentialGroup()
                 .addGap(259, 259, 259)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 371, Short.MAX_VALUE)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundKlug1Layout.createSequentialGroup()
-                .addContainerGap(174, Short.MAX_VALUE)
+            .addGroup(backgroundKlug1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(96, 96, 96)
-                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(username, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(171, 171, 171))
+                    .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, backgroundKlug1Layout.createSequentialGroup()
+                            .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_pilih, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         backgroundKlug1Layout.setVerticalGroup(
             backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,17 +127,15 @@ public class Login extends javax.swing.JFrame implements View{
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
-                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(username))
+                .addGap(55, 55, 55)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addComponent(btn_login)
-                .addGap(192, 192, 192))
+                    .addComponent(btn_back)
+                    .addComponent(btn_pilih))
+                .addGap(37, 37, 37))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,7 +158,7 @@ public class Login extends javax.swing.JFrame implements View{
     }// </editor-fold>//GEN-END:initComponents
 
     private void close1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close1MouseReleased
-        this.setState(Login.ICONIFIED);
+        this.setState(PilihKelasMateriMahasiswa.ICONIFIED);
     }//GEN-LAST:event_close1MouseReleased
 
     private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
@@ -183,50 +182,54 @@ public class Login extends javax.swing.JFrame implements View{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihKelasMateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihKelasMateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihKelasMateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihKelasMateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new PilihKelasMateriMahasiswa().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private img.BackgroundKlug backgroundKlug1;
-    private javax.swing.JButton btn_login;
+    private javax.swing.JButton btn_back;
+    private javax.swing.JButton btn_pilih;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField password;
-    private javax.swing.JTextField username;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> pilihKelas;
     // End of variables declaration//GEN-END:variables
-    
-    public String getUsername(){
-        return username.getText();
-    }
-    
-    public String getPassword(){
-        return password.getText();
-    }
-    
-    public JButton getBtnLogin(){
-        return btn_login;
+
+    public JButton getBtn_back() {
+        return btn_back;
     }
 
+    public JButton getBtn_pilih() {
+        return btn_pilih;
+    }
+    
+    public JList getPilihKelas(){
+        return pilihKelas;
+    }
+    
     @Override
     public void addActionListener(ActionListener e) {
-        btn_login.addActionListener(e);
+        btn_back.addActionListener(e);
+        btn_pilih.addActionListener(e);
     }
 }

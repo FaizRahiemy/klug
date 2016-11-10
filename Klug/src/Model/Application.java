@@ -13,44 +13,27 @@ import java.util.ArrayList;
  */
 public class Application {
     private ArrayList<Kelas> kelas;
-    private ArrayList<Mahasiswa> mahasiswa;
-    private ArrayList<Dosen> dosen;
-    private ArrayList<Admin> admin;
+    private ArrayList<Orang> orang;
 
     public Application() {
         kelas = new ArrayList<>();
+        orang = new ArrayList<>();
     }
 
     public ArrayList<Kelas> getKelasList() {
         return kelas;
     }
 
-    public ArrayList<Mahasiswa> getMahasiswaList() {
-        return mahasiswa;
-    }
-
-    public ArrayList<Dosen> getDosenList() {
-        return dosen;
-    }
-
-    public ArrayList<Admin> getAdminList() {
-        return admin;
+    public ArrayList<Orang> getOrangList() {
+        return orang;
     }
     
     public Kelas getKelas(int i) {
         return kelas.get(i);
     }
 
-    public Mahasiswa getMahasiswa(int i) {
-        return mahasiswa.get(i);
-    }
-
-    public Dosen getDosen(int i) {
-        return dosen.get(i);
-    }
-
-    public Admin getAdmin(int i){
-        return admin.get(i);
+    public Orang getOrang(int i) {
+        return orang.get(i);
     }
        
     public void createKelas(String namaMataKuliah, String ruang, String jadwal, Dosen dosen){
@@ -58,14 +41,14 @@ public class Application {
     }
     
     public void createAdmin(String username, String password, String nama, String nip){
-        admin.add(new Admin(username, password, nama, nip));
+        orang.add(new Admin(username, password, nama, nip));
     }
     
     public void createDosen(String username, String password, String nama, String nip, String kodeDosen){
-        dosen.add(new Dosen(username, password, nama, nip, kodeDosen));
+        orang.add(new Dosen(username, password, nama, nip, kodeDosen));
     }
     
     public void createMahasiswa(String username, String password, String nama, String nim, String prodi){
-        mahasiswa.add(new Mahasiswa(username, password, nama, nim, prodi));
+        orang.add(new Mahasiswa(username, password, nama, nim, prodi));
     }
 }

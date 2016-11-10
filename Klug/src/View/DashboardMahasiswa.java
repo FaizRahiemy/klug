@@ -12,12 +12,12 @@ import javax.swing.JButton;
  *
  * @author faiz
  */
-public class Login extends javax.swing.JFrame implements View{
+public class DashboardMahasiswa extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    public DashboardMahasiswa() {
         initComponents();
     }
 
@@ -31,17 +31,17 @@ public class Login extends javax.swing.JFrame implements View{
     private void initComponents() {
 
         backgroundKlug1 = new img.BackgroundKlug();
-        btn_login = new javax.swing.JButton();
-        password = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        username = new javax.swing.JTextField();
+        btn_materi = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         close1 = new javax.swing.JLabel();
+        btn_tugas = new javax.swing.JButton();
+        btn_quiz = new javax.swing.JButton();
+        btn_pelaporan = new javax.swing.JButton();
+        btn_akun = new javax.swing.JButton();
+        btn_logout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setUndecorated(true);
 
@@ -49,29 +49,15 @@ public class Login extends javax.swing.JFrame implements View{
         backgroundKlug1.setMinimumSize(new java.awt.Dimension(800, 600));
         backgroundKlug1.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        btn_login.setBackground(new java.awt.Color(255, 255, 255));
-        btn_login.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        btn_login.setForeground(new java.awt.Color(238, 95, 1));
-        btn_login.setText("Login");
-        btn_login.setBorderPainted(false);
-
-        password.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        password.setForeground(new java.awt.Color(238, 95, 1));
-
-        jLabel1.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(238, 95, 1));
-        jLabel1.setText("Username");
-
-        jLabel2.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(238, 95, 1));
-        jLabel2.setText("Password");
-
-        username.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        username.setForeground(new java.awt.Color(238, 95, 1));
+        btn_materi.setBackground(new java.awt.Color(255, 255, 255));
+        btn_materi.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_materi.setForeground(new java.awt.Color(238, 95, 1));
+        btn_materi.setText("Materi");
+        btn_materi.setBorderPainted(false);
 
         jLabel3.setFont(new java.awt.Font("Aller", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Login");
+        jLabel3.setText("Dashboard Mahasiswa");
 
         close.setBackground(new java.awt.Color(255, 255, 255));
         close.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
@@ -91,6 +77,36 @@ public class Login extends javax.swing.JFrame implements View{
             }
         });
 
+        btn_tugas.setBackground(new java.awt.Color(255, 255, 255));
+        btn_tugas.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_tugas.setForeground(new java.awt.Color(238, 95, 1));
+        btn_tugas.setText("Tugas");
+        btn_tugas.setBorderPainted(false);
+
+        btn_quiz.setBackground(new java.awt.Color(255, 255, 255));
+        btn_quiz.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_quiz.setForeground(new java.awt.Color(238, 95, 1));
+        btn_quiz.setText("Quiz");
+        btn_quiz.setBorderPainted(false);
+
+        btn_pelaporan.setBackground(new java.awt.Color(255, 255, 255));
+        btn_pelaporan.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_pelaporan.setForeground(new java.awt.Color(238, 95, 1));
+        btn_pelaporan.setText("Pelaporan");
+        btn_pelaporan.setBorderPainted(false);
+
+        btn_akun.setBackground(new java.awt.Color(255, 255, 255));
+        btn_akun.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_akun.setForeground(new java.awt.Color(238, 95, 1));
+        btn_akun.setText("Akun");
+        btn_akun.setBorderPainted(false);
+
+        btn_logout.setBackground(new java.awt.Color(255, 255, 255));
+        btn_logout.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_logout.setForeground(new java.awt.Color(238, 95, 1));
+        btn_logout.setText("Logout");
+        btn_logout.setBorderPainted(false);
+
         javax.swing.GroupLayout backgroundKlug1Layout = new javax.swing.GroupLayout(backgroundKlug1);
         backgroundKlug1.setLayout(backgroundKlug1Layout);
         backgroundKlug1Layout.setHorizontalGroup(
@@ -98,23 +114,21 @@ public class Login extends javax.swing.JFrame implements View{
             .addGroup(backgroundKlug1Layout.createSequentialGroup()
                 .addGap(259, 259, 259)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundKlug1Layout.createSequentialGroup()
-                .addContainerGap(174, Short.MAX_VALUE)
+            .addGroup(backgroundKlug1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(96, 96, 96)
-                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(username, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(171, 171, 171))
+                    .addComponent(btn_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_akun, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_pelaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_quiz, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_tugas, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_materi, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         backgroundKlug1Layout.setVerticalGroup(
             backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,17 +140,19 @@ public class Login extends javax.swing.JFrame implements View{
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
-                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(username))
+                .addGap(90, 90, 90)
+                .addComponent(btn_materi)
                 .addGap(18, 18, 18)
-                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addComponent(btn_login)
-                .addGap(192, 192, 192))
+                .addComponent(btn_tugas)
+                .addGap(18, 18, 18)
+                .addComponent(btn_quiz)
+                .addGap(18, 18, 18)
+                .addComponent(btn_pelaporan)
+                .addGap(18, 18, 18)
+                .addComponent(btn_akun)
+                .addGap(18, 18, 18)
+                .addComponent(btn_logout)
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,7 +175,7 @@ public class Login extends javax.swing.JFrame implements View{
     }// </editor-fold>//GEN-END:initComponents
 
     private void close1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close1MouseReleased
-        this.setState(Login.ICONIFIED);
+        this.setState(DashboardMahasiswa.ICONIFIED);
     }//GEN-LAST:event_close1MouseReleased
 
     private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
@@ -183,50 +199,69 @@ public class Login extends javax.swing.JFrame implements View{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new DashboardMahasiswa().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private img.BackgroundKlug backgroundKlug1;
-    private javax.swing.JButton btn_login;
+    private javax.swing.JButton btn_akun;
+    private javax.swing.JButton btn_logout;
+    private javax.swing.JButton btn_materi;
+    private javax.swing.JButton btn_pelaporan;
+    private javax.swing.JButton btn_quiz;
+    private javax.swing.JButton btn_tugas;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField password;
-    private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
-    
-    public String getUsername(){
-        return username.getText();
-    }
-    
-    public String getPassword(){
-        return password.getText();
-    }
-    
-    public JButton getBtnLogin(){
-        return btn_login;
+
+    public JButton getBtn_akun() {
+        return btn_akun;
     }
 
+    public JButton getBtn_logout() {
+        return btn_logout;
+    }
+
+    public JButton getBtn_materi() {
+        return btn_materi;
+    }
+
+    public JButton getBtn_pelaporan() {
+        return btn_pelaporan;
+    }
+
+    public JButton getBtn_quiz() {
+        return btn_quiz;
+    }
+
+    public JButton getBtn_tugas() {
+        return btn_tugas;
+    }
+    
     @Override
     public void addActionListener(ActionListener e) {
-        btn_login.addActionListener(e);
+        btn_akun.addActionListener(e);
+        btn_logout.addActionListener(e);
+        btn_materi.addActionListener(e);
+        btn_pelaporan.addActionListener(e);
+        btn_quiz.addActionListener(e);
+        btn_tugas.addActionListener(e);
     }
 }
