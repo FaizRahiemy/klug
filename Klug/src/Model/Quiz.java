@@ -16,7 +16,7 @@ public class Quiz {
     private Kelas kelas;
     private ArrayList<Soal> soal;
 
-    public Quiz(String judulQuiz, Kelas kelas) {
+    public Quiz(String judulQuiz) {
         this.judulQuiz = judulQuiz;
         soal = new ArrayList<>();
     }
@@ -36,13 +36,12 @@ public class Quiz {
     public Soal getSoal(int i) {
         return soal.get(i);
     }
-
-    public Kelas getKelas() {
-        return kelas;
-    }
     
     public void createSoal(String soal){
         this.soal.add(new Soal(soal));
     }
     
+    public Kelas getKelas() {
+        return kelas;
+    }
 }

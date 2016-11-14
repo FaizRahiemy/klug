@@ -6,19 +6,22 @@
 package View;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JTextArea;
 
 /**
  *
  * @author faiz
  */
-public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements View{
+public class MateriMahasiswa extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form Login
      */
-    public PilihKelasMateriMahasiswa() {
+    public MateriMahasiswa() {
         initComponents();
     }
 
@@ -32,14 +35,16 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
     private void initComponents() {
 
         backgroundKlug1 = new img.BackgroundKlug();
-        jLabel3 = new javax.swing.JLabel();
+        judulHalaman = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         close1 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
-        btn_pilih = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        pilihKelas = new javax.swing.JList<>();
+        pilihMateri = new javax.swing.JList<>();
+        judul = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        isiMateri = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -49,9 +54,9 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
         backgroundKlug1.setMinimumSize(new java.awt.Dimension(800, 600));
         backgroundKlug1.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jLabel3.setFont(new java.awt.Font("Aller", 0, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Materi");
+        judulHalaman.setFont(new java.awt.Font("Aller", 0, 36)); // NOI18N
+        judulHalaman.setForeground(new java.awt.Color(255, 255, 255));
+        judulHalaman.setText("Materi");
 
         close.setBackground(new java.awt.Color(255, 255, 255));
         close.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
@@ -77,21 +82,24 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
         btn_back.setText("Kembali");
         btn_back.setBorderPainted(false);
 
-        btn_pilih.setBackground(new java.awt.Color(255, 255, 255));
-        btn_pilih.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        btn_pilih.setForeground(new java.awt.Color(238, 95, 1));
-        btn_pilih.setText("Pilih");
-        btn_pilih.setBorderPainted(false);
-
         jLabel1.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(238, 95, 1));
-        jLabel1.setText("Pilih Kelas");
+        jLabel1.setText("Daftar Materi");
 
-        pilihKelas.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
-        pilihKelas.setForeground(new java.awt.Color(238, 95, 1));
-        pilihKelas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        pilihKelas.setSelectionBackground(new java.awt.Color(238, 95, 1));
-        jScrollPane1.setViewportView(pilihKelas);
+        pilihMateri.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
+        pilihMateri.setForeground(new java.awt.Color(238, 95, 1));
+        pilihMateri.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        pilihMateri.setSelectionBackground(new java.awt.Color(238, 95, 1));
+        jScrollPane1.setViewportView(pilihMateri);
+
+        judul.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        judul.setForeground(new java.awt.Color(238, 95, 1));
+        judul.setText("Materi");
+
+        isiMateri.setEditable(false);
+        isiMateri.setColumns(20);
+        isiMateri.setRows(5);
+        jScrollPane2.setViewportView(isiMateri);
 
         javax.swing.GroupLayout backgroundKlug1Layout = new javax.swing.GroupLayout(backgroundKlug1);
         backgroundKlug1.setLayout(backgroundKlug1Layout);
@@ -99,7 +107,7 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
             backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundKlug1Layout.createSequentialGroup()
                 .addGap(259, 259, 259)
-                .addComponent(jLabel3)
+                .addComponent(judulHalaman)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 371, Short.MAX_VALUE)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -108,13 +116,15 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
             .addGroup(backgroundKlug1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, backgroundKlug1Layout.createSequentialGroup()
-                            .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_pilih, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(backgroundKlug1Layout.createSequentialGroup()
+                        .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(judul)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         backgroundKlug1Layout.setVerticalGroup(
@@ -126,15 +136,17 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
                         .addComponent(close, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel3)))
+                        .addComponent(judulHalaman)))
                 .addGap(55, 55, 55)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_back)
-                    .addComponent(btn_pilih))
+                    .addComponent(jLabel1)
+                    .addComponent(judul))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addGap(18, 18, 18)
+                .addComponent(btn_back)
                 .addGap(37, 37, 37))
         );
 
@@ -158,7 +170,7 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
     }// </editor-fold>//GEN-END:initComponents
 
     private void close1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close1MouseReleased
-        this.setState(PilihKelasMateriMahasiswa.ICONIFIED);
+        this.setState(MateriMahasiswa.ICONIFIED);
     }//GEN-LAST:event_close1MouseReleased
 
     private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
@@ -182,14 +194,18 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PilihKelasMateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PilihKelasMateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PilihKelasMateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PilihKelasMateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -198,7 +214,7 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PilihKelasMateriMahasiswa().setVisible(true);
+                new MateriMahasiswa().setVisible(true);
             }
         });
     }
@@ -206,30 +222,46 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private img.BackgroundKlug backgroundKlug1;
     private javax.swing.JButton btn_back;
-    private javax.swing.JButton btn_pilih;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
+    private javax.swing.JTextArea isiMateri;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> pilihKelas;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel judul;
+    private javax.swing.JLabel judulHalaman;
+    private javax.swing.JList<String> pilihMateri;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBtn_back() {
         return btn_back;
     }
-
-    public JButton getBtn_pilih() {
-        return btn_pilih;
+    
+    public JList getPilihMateri(){
+        return pilihMateri;
     }
     
-    public JList getPilihKelas(){
-        return pilihKelas;
+    public JLabel getJudul(){
+        return judul;
+    }
+    
+    public JTextArea getMateri(){
+        return isiMateri;
+    }
+    
+    public JLabel getJudulHalaman(){
+        return judulHalaman;
     }
     
     @Override
     public void addActionListener(ActionListener e) {
         btn_back.addActionListener(e);
-        btn_pilih.addActionListener(e);
+        //pilihMateri.addActionListener(e);
     }
+
+    @Override
+    public synchronized void addMouseListener(MouseListener l) {
+        pilihMateri.addMouseListener(l);
+    }
+
 }

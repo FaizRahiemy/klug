@@ -16,6 +16,9 @@ public class Kelas {
     private String ruang;
     private String jadwal;
     private Dosen dosen;
+    private ArrayList<Materi> materi;
+    private ArrayList<Tugas> tugas;
+    private ArrayList<Quiz> quiz;
     private ArrayList<Mahasiswa> mahasiswa;
 
     public Kelas(String namaMataKuliah, String ruang, String jadwal, Dosen dosen) {
@@ -24,6 +27,9 @@ public class Kelas {
         this.jadwal = jadwal;
         this.dosen = dosen;
         mahasiswa = new ArrayList<>();
+        materi = new ArrayList<>();
+        tugas = new ArrayList<>();
+        quiz = new ArrayList<>();
     }
 
     public String getNamaMataKuliah() {
@@ -69,4 +75,44 @@ public class Kelas {
     public void addMahasiswa(Mahasiswa mahasiswa){
         this.mahasiswa.add(mahasiswa);
     }
+    
+    public void createMateri(String judulMateri, String isiMateri){
+        Materi materi = new Materi(judulMateri,isiMateri);
+        this.materi.add(materi);
+    }
+    
+    public ArrayList<Materi> getMateriList(){
+        return materi;
+    }
+    
+    public Materi getMateri(int i){
+        return materi.get(i);
+    }
+    
+    public void createTugas(String judulTugas, String isiTugas){
+        Tugas tugas = new Tugas(judulTugas, isiTugas);
+        this.tugas.add(tugas);
+    }
+    
+    public ArrayList<Tugas> getTugasList(){
+        return tugas;
+    }
+    
+    public Tugas getTugas(int i){
+        return tugas.get(i);
+    }
+    
+    /*public void createQuiz(String judulQuiz,Kelas kelas){
+        Quiz quiz = new Quiz(judulQuiz);
+        this.quiz.add(quiz);
+    }*/
+    
+    public ArrayList<Quiz> getQuizList(){
+        return quiz;
+    }
+    
+    public Quiz getQuiz(int i){
+        return quiz.get(i);
+    }
+    
 }

@@ -14,9 +14,11 @@ import java.util.ArrayList;
 public class Mahasiswa extends Orang{
     private String nim;
     private String prodi;
+    private ArrayList<Kelas> kelas;
     private ArrayList<Nilai> nilai;
     private ArrayList<Kehadiran> kehadiran;
     private ArrayList<JawabanMahasiswa> jawaban;
+    private ArrayList<TugasMhs> tugas;
 
     public Mahasiswa(String username, String password, String nama, String nim, String prodi) {
         super(username,password,nama);
@@ -25,6 +27,8 @@ public class Mahasiswa extends Orang{
         nilai = new ArrayList<>();
         kehadiran = new ArrayList<>();
         jawaban = new ArrayList<>();
+        kelas = new ArrayList<>();
+        tugas = new ArrayList<>();
     }
 
     public String getNim() {
@@ -55,6 +59,14 @@ public class Mahasiswa extends Orang{
         return jawaban;
     }
     
+    public ArrayList<Kelas> getKelasList() {
+        return kelas;
+    }
+    
+    public ArrayList<TugasMhs> getTugasList() {
+        return tugas;
+    }
+    
     public Nilai getNilai(int i) {
         return nilai.get(i);
     }
@@ -67,4 +79,19 @@ public class Mahasiswa extends Orang{
         return jawaban.get(i);
     }
     
+    public Kelas getKelas(int i) {
+        return kelas.get(i);
+    }
+    
+    public TugasMhs getTugas(int i) {
+        return tugas.get(i);
+    }
+    
+    public void addKelas(Kelas kelas){
+        this.kelas.add(kelas);
+    }
+    
+    public void createTugas(TugasMhs tugas){
+        this.tugas.add(tugas);
+    }
 }

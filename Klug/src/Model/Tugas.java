@@ -13,11 +13,11 @@ import java.util.ArrayList;
  */
 public class Tugas {
     private String judulTugas;
-    private ArrayList<Soal> soal;
+    private String isiTugas;
 
-    public Tugas(String judulTugas) {
+    public Tugas(String judulTugas, String isiTugas) {
         this.judulTugas = judulTugas;
-        soal = new ArrayList<>();
+        this.isiTugas = isiTugas;
     }
 
     public String getJudulTugas() {
@@ -28,16 +28,12 @@ public class Tugas {
         this.judulTugas = judulTugas;
     }
 
-    public ArrayList<Soal> getSoalList() {
-        return soal;
+    public String getIsiTugas() {
+        return isiTugas;
     }
-    
-    public Soal getSoal(int i) {
-        return soal.get(i);
-    }
-    
-    public void createSoal(String soal){
-        this.soal.add(new Soal(soal));
+
+    public void setIsiTugas(String isiTugas) {
+        this.isiTugas = isiTugas;
     }
     
     public void uploadJawaban( ){

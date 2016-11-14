@@ -13,12 +13,12 @@ import javax.swing.JList;
  *
  * @author faiz
  */
-public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements View{
+public class PilihKelasTugasMahasiswa extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form Login
      */
-    public PilihKelasMateriMahasiswa() {
+    public PilihKelasTugasMahasiswa() {
         initComponents();
     }
 
@@ -51,7 +51,7 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
 
         jLabel3.setFont(new java.awt.Font("Aller", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Materi");
+        jLabel3.setText("Tugas");
 
         close.setBackground(new java.awt.Color(255, 255, 255));
         close.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
@@ -100,7 +100,7 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
             .addGroup(backgroundKlug1Layout.createSequentialGroup()
                 .addGap(259, 259, 259)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 371, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 380, Short.MAX_VALUE)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,7 +158,7 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
     }// </editor-fold>//GEN-END:initComponents
 
     private void close1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close1MouseReleased
-        this.setState(PilihKelasMateriMahasiswa.ICONIFIED);
+        this.setState(PilihKelasTugasMahasiswa.ICONIFIED);
     }//GEN-LAST:event_close1MouseReleased
 
     private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
@@ -182,14 +182,18 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PilihKelasMateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihKelasTugasMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PilihKelasMateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihKelasTugasMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PilihKelasMateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihKelasTugasMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PilihKelasMateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihKelasTugasMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -198,7 +202,7 @@ public class PilihKelasMateriMahasiswa extends javax.swing.JFrame implements Vie
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PilihKelasMateriMahasiswa().setVisible(true);
+                new PilihKelasTugasMahasiswa().setVisible(true);
             }
         });
     }
