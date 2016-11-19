@@ -7,18 +7,19 @@ package View;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
 
 /**
  *
  * @author faiz
  */
-public class PilihKelasTugasMahasiswa extends javax.swing.JFrame implements View{
+public class PilihKelas extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form Login
      */
-    public PilihKelasTugasMahasiswa() {
+    public PilihKelas() {
         initComponents();
     }
 
@@ -32,7 +33,7 @@ public class PilihKelasTugasMahasiswa extends javax.swing.JFrame implements View
     private void initComponents() {
 
         backgroundKlug1 = new img.BackgroundKlug();
-        jLabel3 = new javax.swing.JLabel();
+        halaman = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         close1 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
@@ -49,9 +50,9 @@ public class PilihKelasTugasMahasiswa extends javax.swing.JFrame implements View
         backgroundKlug1.setMinimumSize(new java.awt.Dimension(800, 600));
         backgroundKlug1.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jLabel3.setFont(new java.awt.Font("Aller", 0, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Tugas");
+        halaman.setFont(new java.awt.Font("Aller", 0, 36)); // NOI18N
+        halaman.setForeground(new java.awt.Color(255, 255, 255));
+        halaman.setText("Tugas");
 
         close.setBackground(new java.awt.Color(255, 255, 255));
         close.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
@@ -99,7 +100,7 @@ public class PilihKelasTugasMahasiswa extends javax.swing.JFrame implements View
             backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundKlug1Layout.createSequentialGroup()
                 .addGap(259, 259, 259)
-                .addComponent(jLabel3)
+                .addComponent(halaman)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 380, Short.MAX_VALUE)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -126,7 +127,7 @@ public class PilihKelasTugasMahasiswa extends javax.swing.JFrame implements View
                         .addComponent(close, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel3)))
+                        .addComponent(halaman)))
                 .addGap(55, 55, 55)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -158,7 +159,7 @@ public class PilihKelasTugasMahasiswa extends javax.swing.JFrame implements View
     }// </editor-fold>//GEN-END:initComponents
 
     private void close1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close1MouseReleased
-        this.setState(PilihKelasTugasMahasiswa.ICONIFIED);
+        this.setState(PilihKelas.ICONIFIED);
     }//GEN-LAST:event_close1MouseReleased
 
     private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
@@ -182,14 +183,22 @@ public class PilihKelasTugasMahasiswa extends javax.swing.JFrame implements View
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PilihKelasTugasMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihKelas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PilihKelasTugasMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihKelas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PilihKelasTugasMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihKelas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PilihKelasTugasMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihKelas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -202,7 +211,7 @@ public class PilihKelasTugasMahasiswa extends javax.swing.JFrame implements View
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PilihKelasTugasMahasiswa().setVisible(true);
+                new PilihKelas().setVisible(true);
             }
         });
     }
@@ -213,8 +222,8 @@ public class PilihKelasTugasMahasiswa extends javax.swing.JFrame implements View
     private javax.swing.JButton btn_pilih;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
+    private javax.swing.JLabel halaman;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> pilihKelas;
     // End of variables declaration//GEN-END:variables
@@ -229,6 +238,10 @@ public class PilihKelasTugasMahasiswa extends javax.swing.JFrame implements View
     
     public JList getPilihKelas(){
         return pilihKelas;
+    }
+
+    public JLabel getHalaman() {
+        return halaman;
     }
     
     @Override

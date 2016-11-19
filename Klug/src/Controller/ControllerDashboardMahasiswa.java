@@ -40,14 +40,16 @@ public class ControllerDashboardMahasiswa implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         Object x = e.getSource();
-        if(x.equals(dashMhs.getBtn_akun())){
-            
-        }else if(x.equals(dashMhs.getBtn_logout())){
-            ControllerLogin login = new ControllerLogin(app,file);
-        }else if(x.equals(dashMhs.getBtn_materi())){
+        if(x.equals(dashMhs.getBtn_materi())){
             ControllerPilihKelasMateriMahasiswa pilKelMateri = new ControllerPilihKelasMateriMahasiswa(app,file,userId);
         }else if(x.equals(dashMhs.getBtn_tugas())){
             ControllerPilihKelasTugasMahasiswa pilKelTugas = new ControllerPilihKelasTugasMahasiswa(app,file,userId);
+        }else if(x.equals(dashMhs.getBtn_quiz())){
+            ControllerPilihKelasQuizMahasiswa pilKelQuiz = new ControllerPilihKelasQuizMahasiswa(app,file,userId);
+        }else if(x.equals(dashMhs.getBtn_akun())){
+            
+        }else if(x.equals(dashMhs.getBtn_logout())){
+            ControllerLogin login = new ControllerLogin(app,file);
         }
         dashMhs.dispose();
     }

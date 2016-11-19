@@ -18,13 +18,13 @@ import javax.swing.JOptionPane;
  * @author faiz
  */
 public class ControllerPilihKelasTugasMahasiswa implements ActionListener{
-    private PilihKelasTugasMahasiswa pilKelTugas = null;
+    private PilihKelas pilKelTugas = null;
     private Application app;
     private FileIO file;
     private int userId;
     
     public ControllerPilihKelasTugasMahasiswa(Application app, FileIO file, int userId){
-        pilKelTugas = new PilihKelasTugasMahasiswa();
+        pilKelTugas = new PilihKelas();
         this.app = app;
         this.file = file;
         this.userId = userId;

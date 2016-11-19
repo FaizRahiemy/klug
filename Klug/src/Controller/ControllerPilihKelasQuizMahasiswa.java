@@ -17,38 +17,38 @@ import javax.swing.JOptionPane;
  *
  * @author faiz
  */
-public class ControllerPilihKelasMateriMahasiswa implements ActionListener{
-    private PilihKelas pilKelMateri = null;
+public class ControllerPilihKelasQuizMahasiswa implements ActionListener{
+    private PilihKelas pilKel = null;
     private Application app;
     private FileIO file;
     private int userId;
     
-    public ControllerPilihKelasMateriMahasiswa(Application app, FileIO file, int userId){
-        pilKelMateri = new PilihKelas();
+    public ControllerPilihKelasQuizMahasiswa(Application app, FileIO file, int userId){
+        pilKel = new PilihKelas();
         this.app = app;
         this.file = file;
         this.userId = userId;
-        pilKelMateri.setResizable(false);
-        pilKelMateri.getBtn_back().addActionListener(this);
-        pilKelMateri.getBtn_pilih().addActionListener(this);
-        pilKelMateri.getHalaman().setText("Materi");
+        pilKel.setResizable(false);
+        pilKel.getBtn_back().addActionListener(this);
+        pilKel.getBtn_pilih().addActionListener(this);
+        pilKel.getHalaman().setText("Quiz");
         DefaultListModel modelList = new DefaultListModel();
-        pilKelMateri.getPilihKelas().setModel(modelList);
+        pilKel.getPilihKelas().setModel(modelList);
         for(int i=0;i<app.getMahasiswa(userId).getKelasList().size();i++){
             modelList.addElement(app.getMahasiswa(userId).getKelas(i).getNamaMataKuliah());
         }
-        pilKelMateri.getPilihKelas().setSelectedIndex(0);
-        pilKelMateri.setVisible(true);
+        pilKel.getPilihKelas().setSelectedIndex(0);
+        pilKel.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object x = e.getSource();
-        if(x.equals(pilKelMateri.getBtn_back())){
+        if(x.equals(pilKel.getBtn_back())){
             ControllerDashboardMahasiswa dashMhs = new ControllerDashboardMahasiswa(app,file,userId);
-        }else if(x.equals(pilKelMateri.getBtn_pilih())){
-            ControllerMateriMahasiswa materiMhs = new ControllerMateriMahasiswa(app,file,userId,pilKelMateri.getPilihKelas().getSelectedIndex());
+        }else if(x.equals(pilKel.getBtn_pilih())){
+            ControllerTugasMahasiswa tugasMhs = new ControllerTugasMahasiswa(app,file,userId,pilKel.getPilihKelas().getSelectedIndex());
         }
-        pilKelMateri.dispose();
+        pilKel.dispose();
     }
 }
