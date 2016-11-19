@@ -94,4 +94,8 @@ public class Mahasiswa extends Orang{
     public void createTugas(TugasMhs tugas){
         this.tugas.add(tugas);
     }
+    
+    public void createJawaban(JawabanMahasiswa jawaban){
+        this.jawaban.add(jawaban);
+    }
 }

@@ -47,7 +47,7 @@ public class ControllerPilihKelasQuizMahasiswa implements ActionListener{
         if(x.equals(pilKel.getBtn_back())){
             ControllerDashboardMahasiswa dashMhs = new ControllerDashboardMahasiswa(app,file,userId);
         }else if(x.equals(pilKel.getBtn_pilih())){
-            ControllerTugasMahasiswa tugasMhs = new ControllerTugasMahasiswa(app,file,userId,pilKel.getPilihKelas().getSelectedIndex());
+            ControllerPilihQuizMahasiswa tugasMhs = new ControllerPilihQuizMahasiswa(app,file,userId,pilKel.getPilihKelas().getSelectedIndex());
         }
         pilKel.dispose();
     }

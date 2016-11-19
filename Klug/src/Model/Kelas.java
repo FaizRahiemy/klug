@@ -102,10 +102,10 @@ public class Kelas {
         return tugas.get(i);
     }
     
-    /*public void createQuiz(String judulQuiz,Kelas kelas){
+    public void createQuiz(String judulQuiz){
         Quiz quiz = new Quiz(judulQuiz);
         this.quiz.add(quiz);
-    }*/
+    }
     
     public ArrayList<Quiz> getQuizList(){
         return quiz;

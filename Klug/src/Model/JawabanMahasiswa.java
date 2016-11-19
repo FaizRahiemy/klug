@@ -12,16 +12,26 @@ import java.util.ArrayList;
  * @author faiz
  */
 public class JawabanMahasiswa {
+    private boolean sudah;
     private Quiz quiz;
     private Mahasiswa mahasiswa;
     private ArrayList<Jawaban> jawaban;
 
     public JawabanMahasiswa(Mahasiswa mahasiswa, Quiz quiz) {
+        this.sudah = false;
         this.mahasiswa = mahasiswa;
         this.quiz = quiz;
         jawaban = new ArrayList<>();
     }
 
+    public boolean isSudah() {
+        return sudah;
+    }
+
+    public void setSudah() {
+        sudah = true;
+    }
+    
     public Quiz getQuiz() {
         return quiz;
     }
@@ -47,6 +57,7 @@ public class JawabanMahasiswa {
             }
         }
         nilai = benar/jawaban.size();
+        sudah = true;
         mahasiswa.getNilaiList().add(new Nilai("Quiz "+quiz.getJudulQuiz(), quiz.getKelas(), nilai));
     }
 }
