@@ -6,22 +6,22 @@
 package View;
 
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 
 /**
  *
  * @author faiz
  */
-public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
+public class KehadiranMahasiswa extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form Login
      */
-    public PilihQuizMahasiswa() {
+    public KehadiranMahasiswa() {
         initComponents();
     }
 
@@ -39,13 +39,8 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
         close = new javax.swing.JLabel();
         close1 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        pilihQuiz = new javax.swing.JList<>();
-        judul = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        status = new javax.swing.JTextArea();
-        btn_kerjakan = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        kehadiran = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -57,7 +52,7 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
 
         judulHalaman.setFont(new java.awt.Font("Aller", 0, 36)); // NOI18N
         judulHalaman.setForeground(new java.awt.Color(255, 255, 255));
-        judulHalaman.setText("Quiz");
+        judulHalaman.setText("Kehadiran");
 
         close.setBackground(new java.awt.Color(255, 255, 255));
         close.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
@@ -83,56 +78,51 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
         btn_back.setText("Kembali");
         btn_back.setBorderPainted(false);
 
-        jLabel1.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(238, 95, 1));
-        jLabel1.setText("Daftar Quiz");
+        kehadiran.setFont(new java.awt.Font("Aller", 0, 12)); // NOI18N
+        kehadiran.setForeground(new java.awt.Color(238, 95, 1));
+        kehadiran.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        pilihQuiz.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
-        pilihQuiz.setForeground(new java.awt.Color(238, 95, 1));
-        pilihQuiz.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        pilihQuiz.setSelectionBackground(new java.awt.Color(238, 95, 1));
-        jScrollPane1.setViewportView(pilihQuiz);
+            },
+            new String [] {
+                "Mata Kuliah", "Dosen", "Total Pertemuan", "Kehadiran", "Persentase"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
-        judul.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        judul.setForeground(new java.awt.Color(238, 95, 1));
-        judul.setText("Quiz");
-
-        status.setEditable(false);
-        status.setColumns(20);
-        status.setRows(2);
-        status.setText("Status : \nJumlah Soal : ");
-        jScrollPane2.setViewportView(status);
-
-        btn_kerjakan.setBackground(new java.awt.Color(255, 255, 255));
-        btn_kerjakan.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
-        btn_kerjakan.setForeground(new java.awt.Color(238, 95, 1));
-        btn_kerjakan.setText("Kerjakan");
-        btn_kerjakan.setBorderPainted(false);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        kehadiran.setSelectionBackground(new java.awt.Color(238, 95, 1));
+        kehadiran.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane3.setViewportView(kehadiran);
 
         javax.swing.GroupLayout backgroundKlug1Layout = new javax.swing.GroupLayout(backgroundKlug1);
         backgroundKlug1.setLayout(backgroundKlug1Layout);
         backgroundKlug1Layout.setHorizontalGroup(
             backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundKlug1Layout.createSequentialGroup()
-                .addGap(259, 259, 259)
-                .addComponent(judulHalaman)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 401, Short.MAX_VALUE)
-                .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(backgroundKlug1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_kerjakan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(judul)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(backgroundKlug1Layout.createSequentialGroup()
+                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundKlug1Layout.createSequentialGroup()
+                        .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(backgroundKlug1Layout.createSequentialGroup()
+                                .addGap(209, 209, 209)
+                                .addComponent(judulHalaman)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
+                                .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(backgroundKlug1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         backgroundKlug1Layout.setVerticalGroup(
             backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,18 +134,8 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(judulHalaman)))
-                .addGap(55, 55, 55)
-                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(judul))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                    .addGroup(backgroundKlug1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_kerjakan)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_back)
                 .addGap(37, 37, 37))
@@ -181,7 +161,7 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
     }// </editor-fold>//GEN-END:initComponents
 
     private void close1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close1MouseReleased
-        this.setState(PilihQuizMahasiswa.ICONIFIED);
+        this.setState(KehadiranMahasiswa.ICONIFIED);
     }//GEN-LAST:event_close1MouseReleased
 
     private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
@@ -205,30 +185,14 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PilihQuizMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KehadiranMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PilihQuizMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KehadiranMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PilihQuizMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KehadiranMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PilihQuizMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KehadiranMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -249,7 +213,7 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PilihQuizMahasiswa().setVisible(true);
+                new KehadiranMahasiswa().setVisible(true);
             }
         });
     }
@@ -257,36 +221,19 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private img.BackgroundKlug backgroundKlug1;
     private javax.swing.JButton btn_back;
-    private javax.swing.JButton btn_kerjakan;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel judul;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel judulHalaman;
-    private javax.swing.JList<String> pilihQuiz;
-    private javax.swing.JTextArea status;
+    private javax.swing.JTable kehadiran;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBtn_back() {
         return btn_back;
     }
-    
-    public JList getPilihQuiz(){
-        return pilihQuiz;
-    }
 
-    public JButton getBtn_kerjakan() {
-        return btn_kerjakan;
-    }
-    
-    public JLabel getJudul(){
-        return judul;
-    }
-    
-    public JTextArea getStatus(){
-        return status;
+    public JTable getKehadiran() {
+        return kehadiran;
     }
     
     public JLabel getJudulHalaman(){
@@ -297,11 +244,6 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
     public void addActionListener(ActionListener e) {
         btn_back.addActionListener(e);
         //pilihMateri.addActionListener(e);
-    }
-
-    @Override
-    public synchronized void addMouseListener(MouseListener l) {
-        pilihQuiz.addMouseListener(l);
     }
 
 }

@@ -28,8 +28,8 @@ public class JawabanMahasiswa {
         return sudah;
     }
 
-    public void setSudah() {
-        sudah = true;
+    public void setSudah(boolean sudah) {
+        this.sudah = sudah;
     }
     
     public Quiz getQuiz() {
@@ -43,20 +43,29 @@ public class JawabanMahasiswa {
     public ArrayList<Jawaban> getJawabanList() {
         return jawaban;
     }
+
+    public void addJawaban(Jawaban jawaban) {
+        this.jawaban.add(jawaban);
+    }
     
     public Jawaban getJawaban(int i) {
         return jawaban.get(i);
     }
     
+    public void setJawaban(int i, Jawaban jawaban) {
+        this.jawaban.set(i,jawaban);
+    }
+    
     public void hitungNilai(){
-        int benar=0;
-        int nilai;
+        double benar=0;
+        double soal = jawaban.size();
+        double nilai;
         for(int i=0; i<jawaban.size(); i++){
             if (jawaban.get(i).isBenar()){
                 benar++;
             }
         }
-        nilai = benar/jawaban.size();
+        nilai = (benar/soal)*100;
         sudah = true;
         mahasiswa.getNilaiList().add(new Nilai("Quiz "+quiz.getJudulQuiz(), quiz.getKelas(), nilai));
     }

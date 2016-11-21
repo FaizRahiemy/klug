@@ -13,14 +13,19 @@ import java.util.Date;
  */
 public class Kehadiran {
     private String nama;
-    private Date tanggal;
+    private String tanggal;
     private Kelas kelas;
     private boolean hadir;
 
-    public Kehadiran(String nama, Date tanggal, Kelas kelas) {
+    public Kehadiran(String nama, Kelas kelas, boolean hadir) {
         this.nama = nama;
         this.kelas = kelas;
-        this.hadir = true;
+        this.hadir = hadir;
+    }
+    
+    public Kehadiran(Kelas kelas, boolean hadir) {
+        this.kelas = kelas;
+        this.hadir = hadir;
     }
 
     public String getNama() {
@@ -39,11 +44,11 @@ public class Kehadiran {
         this.hadir = hadir;
     }
 
-    public Date getTanggal() {
+    public String getTanggal() {
         return tanggal;
     }
 
-    public void setTanggal(Date tanggal) {
+    public void setTanggal(String tanggal) {
         this.tanggal = tanggal;
     }
 

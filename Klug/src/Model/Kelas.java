@@ -102,8 +102,8 @@ public class Kelas {
         return tugas.get(i);
     }
     
-    public void createQuiz(String judulQuiz){
-        Quiz quiz = new Quiz(judulQuiz);
+    public void createQuiz(String judulQuiz, Kelas kelas){
+        Quiz quiz = new Quiz(judulQuiz,this);
         this.quiz.add(quiz);
     }
     

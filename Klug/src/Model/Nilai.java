@@ -35,5 +35,9 @@ public class Nilai {
     public void setNilai(double nilai) {
         this.nilai = nilai;
     }
+
+    public Kelas getKelas() {
+        return kelas;
+    }
     
 }

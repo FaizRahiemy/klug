@@ -31,7 +31,8 @@ public class ControllerDashboardMahasiswa implements ActionListener{
         dashMhs.getBtn_akun().addActionListener(this);
         dashMhs.getBtn_logout().addActionListener(this);
         dashMhs.getBtn_materi().addActionListener(this);
-        dashMhs.getBtn_pelaporan().addActionListener(this);
+        dashMhs.getBtn_kehadiran().addActionListener(this);
+        dashMhs.getBtn_nilai().addActionListener(this);
         dashMhs.getBtn_quiz().addActionListener(this);
         dashMhs.getBtn_tugas().addActionListener(this);
         dashMhs.setVisible(true);
@@ -46,6 +47,10 @@ public class ControllerDashboardMahasiswa implements ActionListener{
             ControllerPilihKelasTugasMahasiswa pilKelTugas = new ControllerPilihKelasTugasMahasiswa(app,file,userId);
         }else if(x.equals(dashMhs.getBtn_quiz())){
             ControllerPilihKelasQuizMahasiswa pilKelQuiz = new ControllerPilihKelasQuizMahasiswa(app,file,userId);
+        }else if(x.equals(dashMhs.getBtn_kehadiran())){
+            ControllerKehadiranMahasiswa kehadiran = new ControllerKehadiranMahasiswa(app,file,userId);
+        }else if(x.equals(dashMhs.getBtn_nilai())){
+            ControllerPilihKelasNilaiMahasiswa kehadiran = new ControllerPilihKelasNilaiMahasiswa(app,file,userId);
         }else if(x.equals(dashMhs.getBtn_akun())){
             
         }else if(x.equals(dashMhs.getBtn_logout())){

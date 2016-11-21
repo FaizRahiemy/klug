@@ -40,6 +40,11 @@ public class Application {
         Mahasiswa mhs = (Mahasiswa) orang.get(i);
         return mhs;
     }
+    
+    public Dosen getDosen(int i){
+        Dosen dosen = (Dosen) orang.get(i);
+        return dosen;
+    }
        
     public void createKelas(String namaMataKuliah, String ruang, String jadwal, Dosen dosen){
         kelas.add(new Kelas(namaMataKuliah, ruang, jadwal, dosen));

@@ -37,9 +37,10 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
         close1 = new javax.swing.JLabel();
         btn_tugas = new javax.swing.JButton();
         btn_quiz = new javax.swing.JButton();
-        btn_pelaporan = new javax.swing.JButton();
+        btn_kehadiran = new javax.swing.JButton();
         btn_akun = new javax.swing.JButton();
         btn_logout = new javax.swing.JButton();
+        btn_nilai = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -89,11 +90,11 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
         btn_quiz.setText("Quiz");
         btn_quiz.setBorderPainted(false);
 
-        btn_pelaporan.setBackground(new java.awt.Color(255, 255, 255));
-        btn_pelaporan.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        btn_pelaporan.setForeground(new java.awt.Color(238, 95, 1));
-        btn_pelaporan.setText("Pelaporan");
-        btn_pelaporan.setBorderPainted(false);
+        btn_kehadiran.setBackground(new java.awt.Color(255, 255, 255));
+        btn_kehadiran.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_kehadiran.setForeground(new java.awt.Color(238, 95, 1));
+        btn_kehadiran.setText("Kehadiran");
+        btn_kehadiran.setBorderPainted(false);
 
         btn_akun.setBackground(new java.awt.Color(255, 255, 255));
         btn_akun.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
@@ -106,6 +107,12 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
         btn_logout.setForeground(new java.awt.Color(238, 95, 1));
         btn_logout.setText("Logout");
         btn_logout.setBorderPainted(false);
+
+        btn_nilai.setBackground(new java.awt.Color(255, 255, 255));
+        btn_nilai.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_nilai.setForeground(new java.awt.Color(238, 95, 1));
+        btn_nilai.setText("Nilai");
+        btn_nilai.setBorderPainted(false);
 
         javax.swing.GroupLayout backgroundKlug1Layout = new javax.swing.GroupLayout(backgroundKlug1);
         backgroundKlug1.setLayout(backgroundKlug1Layout);
@@ -122,9 +129,10 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
             .addGroup(backgroundKlug1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_nilai, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_akun, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_pelaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_kehadiran, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_quiz, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_tugas, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_materi, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -147,12 +155,14 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
                 .addGap(18, 18, 18)
                 .addComponent(btn_quiz)
                 .addGap(18, 18, 18)
-                .addComponent(btn_pelaporan)
+                .addComponent(btn_kehadiran)
+                .addGap(18, 18, 18)
+                .addComponent(btn_nilai)
                 .addGap(18, 18, 18)
                 .addComponent(btn_akun)
                 .addGap(18, 18, 18)
                 .addComponent(btn_logout)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,9 +231,10 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private img.BackgroundKlug backgroundKlug1;
     private javax.swing.JButton btn_akun;
+    private javax.swing.JButton btn_kehadiran;
     private javax.swing.JButton btn_logout;
     private javax.swing.JButton btn_materi;
-    private javax.swing.JButton btn_pelaporan;
+    private javax.swing.JButton btn_nilai;
     private javax.swing.JButton btn_quiz;
     private javax.swing.JButton btn_tugas;
     private javax.swing.JLabel close;
@@ -243,8 +254,12 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
         return btn_materi;
     }
 
-    public JButton getBtn_pelaporan() {
-        return btn_pelaporan;
+    public JButton getBtn_kehadiran() {
+        return btn_kehadiran;
+    }
+    
+    public JButton getBtn_nilai() {
+        return btn_nilai;
     }
 
     public JButton getBtn_quiz() {
@@ -260,7 +275,7 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
         btn_akun.addActionListener(e);
         btn_logout.addActionListener(e);
         btn_materi.addActionListener(e);
-        btn_pelaporan.addActionListener(e);
+        btn_kehadiran.addActionListener(e);
         btn_quiz.addActionListener(e);
         btn_tugas.addActionListener(e);
     }

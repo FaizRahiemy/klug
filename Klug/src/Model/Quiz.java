@@ -16,8 +16,9 @@ public class Quiz {
     private Kelas kelas;
     private ArrayList<Soal> soal;
 
-    public Quiz(String judulQuiz) {
+    public Quiz(String judulQuiz, Kelas kelas) {
         this.judulQuiz = judulQuiz;
+        this.kelas = kelas;
         soal = new ArrayList<>();
     }
 

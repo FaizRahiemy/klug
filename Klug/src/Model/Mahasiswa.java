@@ -98,4 +98,37 @@ public class Mahasiswa extends Orang{
     public void createJawaban(JawabanMahasiswa jawaban){
         this.jawaban.add(jawaban);
     }
+    
+    public void createKehadiran(Kelas kelas,boolean hadir){
+        this.kehadiran.add(new Kehadiran(kelas,hadir));
+    }
+    
+    public int getTotalPertemuan(Kelas kelas){
+        int total = 0;
+        for (int i=0;i<kehadiran.size();i++){
+            if (kehadiran.get(i).getKelas() == kelas){
+                total++;
+            }
+        }
+        return total;
+    }
+    
+    public int getTotalKehadiran(Kelas kelas){
+        int total = 0;
+        for (int i=0;i<kehadiran.size();i++){
+            if (kehadiran.get(i).getKelas() == kelas){
+                if (kehadiran.get(i).isHadir()){
+                    total++;
+                }
+            }
+        }
+        return total;
+    }
+       
+    public double getPersentaseKehadiran(Kelas kelas){
+        double total = getTotalKehadiran(kelas);
+        double pertemuan = getTotalPertemuan(kelas);
+        double persen = (total/pertemuan)*100;
+        return persen;
+    }
 }

@@ -43,6 +43,7 @@ public class ControllerPilihQuizMahasiswa extends MouseAdapter implements Action
             for(int i=0;i<app.getMahasiswa(userId).getKelas(kelasId).getQuizList().size();i++){
                 modelList.addElement(app.getKelas(kelasId).getQuiz(i).getJudulQuiz());
                 if (i==0){
+                    pilKel.getJudul().setText(app.getMahasiswa(userId).getKelas(kelasId).getQuiz(0).getJudulQuiz());
                     boolean udah=false;
                 int result = -1;
                 for(int j=0;j<app.getMahasiswa(userId).getJawabanList().size();j++){
@@ -56,7 +57,7 @@ public class ControllerPilihQuizMahasiswa extends MouseAdapter implements Action
                 if (udah){
                     if (app.getMahasiswa(userId).getJawaban(result).isSudah()){
                         status = "Sudah dikerjakan";
-                        pilKel.getBtn_kerjakan().setVisible(false);
+                        pilKel.getBtn_kerjakan().setText("Lihat");
                     }else{
                         status = "Belum selesai";
                         pilKel.getBtn_kerjakan().setText("Lanjutkan");
@@ -71,6 +72,7 @@ public class ControllerPilihQuizMahasiswa extends MouseAdapter implements Action
             modelList.addElement("Belum ada Quiz");
             pilKel.getJudul().setText("Belum ada Quiz");
             pilKel.getStatus().setText("Belum ada Quiz");
+            pilKel.getBtn_kerjakan().setVisible(false);
         }
         pilKel.getPilihQuiz().setSelectedIndex(0);
         pilKel.setVisible(true);
@@ -80,9 +82,9 @@ public class ControllerPilihQuizMahasiswa extends MouseAdapter implements Action
     public void actionPerformed(ActionEvent e) {
         Object x = e.getSource();
         if(x.equals(pilKel.getBtn_back())){
-            ControllerDashboardMahasiswa dashMhs = new ControllerDashboardMahasiswa(app,file,userId);
+            ControllerPilihKelasQuizMahasiswa dashMhs = new ControllerPilihKelasQuizMahasiswa(app,file,userId);
         }else if(x.equals(pilKel.getBtn_kerjakan())){
-            //ControllerTugasMahasiswa tugasMhs = new ControllerTugasMahasiswa(app,file,userId,pilKel.getPilihKelas().getSelectedIndex());
+            ControllerQuizMahasiswa quizsMhs = new ControllerQuizMahasiswa(app,file,userId,kelasId,pilKel.getPilihQuiz().getSelectedIndex());
         }
         pilKel.dispose();
     }
@@ -103,19 +105,26 @@ public class ControllerPilihQuizMahasiswa extends MouseAdapter implements Action
                     }
                 }
                 String status;
+                String nilai = "";
                 if (udah){
                     if (app.getMahasiswa(userId).getJawaban(result).isSudah()){
                         status = "Sudah dikerjakan";
-                        pilKel.getBtn_kerjakan().setVisible(false);
+                        pilKel.getBtn_kerjakan().setText("Lihat");
+                        for (int i=0;i<app.getMahasiswa(userId).getNilaiList().size();i++){
+                            if (app.getMahasiswa(userId).getNilai(i).getJudulNilai() == "Quiz "+app.getMahasiswa(userId).getJawaban(result).getQuiz().getJudulQuiz()){
+                                nilai = "Nilai : "+app.getMahasiswa(userId).getNilai(i);
+                                break;
+                            };
+                        }
                     }else{
                         status = "Belum selesai";
                         pilKel.getBtn_kerjakan().setText("Lanjutkan");
                     }
                 }else{
                     status = "Belum dikerjakan";
-                    pilKel.getBtn_kerjakan().setVisible(true);
+                    pilKel.getBtn_kerjakan().setText("Kerjakan");
                 }
-                pilKel.getStatus().setText("Status : " + status + " \nJumlah Soal : "+app.getMahasiswa(userId).getKelas(kelasId).getQuiz(pilKel.getPilihQuiz().getSelectedIndex()).getSoalList().size());
+                pilKel.getStatus().setText("Status : " + status + " \nJumlah Soal : "+app.getMahasiswa(userId).getKelas(kelasId).getQuiz(pilKel.getPilihQuiz().getSelectedIndex()).getSoalList().size()+"\n"+nilai);
             }
         }
     }

@@ -36,7 +36,7 @@ public class Soal {
         return jawaban.get(i);
     }
     
-    public void createJawaban(String jawaban, boolean benar){
-        this.jawaban.add(new Jawaban(jawaban, benar));
+    public void createJawaban(int index, String jawaban, boolean benar){
+        this.jawaban.add(new Jawaban(index, jawaban, benar));
     }
 }

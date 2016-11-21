@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 
 /**
@@ -34,6 +35,7 @@ public class QuizMahasiswa extends javax.swing.JFrame implements View{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         backgroundKlug1 = new img.BackgroundKlug();
         judulHalaman = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
@@ -45,7 +47,7 @@ public class QuizMahasiswa extends javax.swing.JFrame implements View{
         judul = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         soal = new javax.swing.JTextArea();
-        btn_kerjakan = new javax.swing.JButton();
+        btn_finish = new javax.swing.JButton();
         jawaban1 = new javax.swing.JRadioButton();
         jawaban2 = new javax.swing.JRadioButton();
         jawaban3 = new javax.swing.JRadioButton();
@@ -108,21 +110,42 @@ public class QuizMahasiswa extends javax.swing.JFrame implements View{
         soal.setText("Soal");
         jScrollPane2.setViewportView(soal);
 
-        btn_kerjakan.setBackground(new java.awt.Color(255, 255, 255));
-        btn_kerjakan.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
-        btn_kerjakan.setForeground(new java.awt.Color(238, 95, 1));
-        btn_kerjakan.setText("Finish");
-        btn_kerjakan.setBorderPainted(false);
+        btn_finish.setBackground(new java.awt.Color(255, 255, 255));
+        btn_finish.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
+        btn_finish.setForeground(new java.awt.Color(238, 95, 1));
+        btn_finish.setText("Finish");
+        btn_finish.setBorderPainted(false);
 
+        buttonGroup1.add(jawaban1);
+        jawaban1.setFont(new java.awt.Font("Aller", 0, 12)); // NOI18N
+        jawaban1.setForeground(new java.awt.Color(238, 95, 1));
+        jawaban1.setSelected(true);
         jawaban1.setText("Jawaban1");
+        jawaban1.setOpaque(false);
 
+        buttonGroup1.add(jawaban2);
+        jawaban2.setFont(new java.awt.Font("Aller", 0, 12)); // NOI18N
+        jawaban2.setForeground(new java.awt.Color(238, 95, 1));
         jawaban2.setText("Jawaban2");
+        jawaban2.setOpaque(false);
 
+        buttonGroup1.add(jawaban3);
+        jawaban3.setFont(new java.awt.Font("Aller", 0, 12)); // NOI18N
+        jawaban3.setForeground(new java.awt.Color(238, 95, 1));
         jawaban3.setText("Jawaban3");
+        jawaban3.setOpaque(false);
 
+        buttonGroup1.add(jawaban4);
+        jawaban4.setFont(new java.awt.Font("Aller", 0, 12)); // NOI18N
+        jawaban4.setForeground(new java.awt.Color(238, 95, 1));
         jawaban4.setText("Jawaban4");
+        jawaban4.setOpaque(false);
 
+        buttonGroup1.add(jawaban5);
+        jawaban5.setFont(new java.awt.Font("Aller", 0, 12)); // NOI18N
+        jawaban5.setForeground(new java.awt.Color(238, 95, 1));
         jawaban5.setText("Jawaban5");
+        jawaban5.setOpaque(false);
 
         javax.swing.GroupLayout backgroundKlug1Layout = new javax.swing.GroupLayout(backgroundKlug1);
         backgroundKlug1.setLayout(backgroundKlug1Layout);
@@ -145,17 +168,14 @@ public class QuizMahasiswa extends javax.swing.JFrame implements View{
                 .addGap(30, 30, 30)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btn_kerjakan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_finish, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(judul)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jawaban4)
                     .addComponent(jawaban3)
-                    .addGroup(backgroundKlug1Layout.createSequentialGroup()
-                        .addComponent(jawaban1)
-                        .addGap(36, 36, 36)
-                        .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jawaban5)
-                            .addComponent(jawaban4)))
-                    .addComponent(jawaban2))
+                    .addComponent(jawaban2)
+                    .addComponent(jawaban5)
+                    .addComponent(jawaban1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         backgroundKlug1Layout.setVerticalGroup(
@@ -175,22 +195,22 @@ public class QuizMahasiswa extends javax.swing.JFrame implements View{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jawaban1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jawaban2)
                         .addGap(18, 18, 18)
-                        .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jawaban1)
-                            .addComponent(jawaban4))
+                        .addComponent(jawaban3)
                         .addGap(18, 18, 18)
-                        .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jawaban2)
-                            .addComponent(jawaban5))
+                        .addComponent(jawaban4)
                         .addGap(18, 18, 18)
-                        .addComponent(jawaban3))
+                        .addComponent(jawaban5))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
                 .addGap(55, 55, 55)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_back)
-                    .addComponent(btn_kerjakan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_finish, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(37, 37, 37))
         );
 
@@ -322,7 +342,8 @@ public class QuizMahasiswa extends javax.swing.JFrame implements View{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private img.BackgroundKlug backgroundKlug1;
     private javax.swing.JButton btn_back;
-    private javax.swing.JButton btn_kerjakan;
+    private javax.swing.JButton btn_finish;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
     private javax.swing.JLabel jLabel1;
@@ -347,8 +368,8 @@ public class QuizMahasiswa extends javax.swing.JFrame implements View{
         return pilihQuiz;
     }
 
-    public JButton getBtn_kerjakan() {
-        return btn_kerjakan;
+    public JButton getBtn_finish() {
+        return btn_finish;
     }
     
     public JLabel getJudul(){
@@ -362,11 +383,50 @@ public class QuizMahasiswa extends javax.swing.JFrame implements View{
     public JLabel getJudulHalaman(){
         return judulHalaman;
     }
+
+    public JRadioButton getJawaban(int i) {
+        switch (i) {
+            case 1:
+                return jawaban1;
+            case 2:
+                return jawaban2;
+            case 3:
+                return jawaban3;
+            case 4:
+                return jawaban4;
+            default:
+                return jawaban5;
+        }
+    }
+
+    public JRadioButton getJawaban1() {
+        return jawaban1;
+    }
+
+    public JRadioButton getJawaban2() {
+        return jawaban2;
+    }
+
+    public JRadioButton getJawaban3() {
+        return jawaban3;
+    }
+
+    public JRadioButton getJawaban4() {
+        return jawaban4;
+    }
+
+    public JRadioButton getJawaban5() {
+        return jawaban5;
+    }
     
     @Override
     public void addActionListener(ActionListener e) {
         btn_back.addActionListener(e);
-        //pilihMateri.addActionListener(e);
+        jawaban1.addActionListener(e);
+        jawaban2.addActionListener(e);
+        jawaban3.addActionListener(e);
+        jawaban4.addActionListener(e);
+        jawaban5.addActionListener(e);
     }
 
     @Override
