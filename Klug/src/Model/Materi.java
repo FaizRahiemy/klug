@@ -12,10 +12,12 @@ package Model;
 public class Materi {
     private String judulMateri;
     private String isiMateri;
+    private String dir;
 
-    public Materi(String judulMateri, String isiMateri) {
+    public Materi(String judulMateri, String isiMateri, String dir) {
         this.judulMateri = judulMateri;
         this.isiMateri = isiMateri;
+        this.dir = dir;
     }
 
     public String getJudulMateri() {
@@ -32,6 +34,14 @@ public class Materi {
 
     public void setIsiMateri(String isiMateri) {
         this.isiMateri = isiMateri;
+    }
+
+    public String getDir() {
+        return dir;
+    }
+
+    public void setDir(String dir) {
+        this.dir = dir;
     }
     
 }

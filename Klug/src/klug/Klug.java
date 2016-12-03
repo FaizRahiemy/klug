@@ -24,16 +24,21 @@ public class Klug {
         Application app = new Application();
         FileIO file = new FileIO();
         app.createMahasiswa("tes", "tes", "tes", "tes", "tes");
-        app.createDosen("a", "a", "a", "a", "a");
+        app.createDosen("1301144422", "FRA", "frahiemy", "1234", "Faiz Rahiemy");
+        app.createMahasiswa("ayam", "ayam", "ayam", "ayam", "ayam");
         app.createKelas("IMPAL IF-38-02", "A307B", "Jumat, 15.30-18.30", (Dosen) app.getOrang(1));
+        app.getKelas(0).addMahasiswa(app.getMahasiswa(0));
+        app.getKelas(0).addMahasiswa(app.getMahasiswa(2));
         app.getMahasiswa(0).addKelas(app.getKelas(0));
+        app.getMahasiswa(2).addKelas(app.getKelas(0));
+        app.getDosen(1).addKelas(app.getKelas(0));
         app.createKelas("Sisop IF-38-02", "A307B", "Kamis, 15.30-18.30", (Dosen) app.getOrang(1));
         app.getMahasiswa(0).addKelas(app.getKelas(1));
-        app.getKelas(0).createMateri("MVC", "Model View Controller");
-        app.getKelas(0).createMateri("Pattern", "Strategy Pattern");
+        app.getKelas(0).createMateri("MVC", "Model View Controller","mvc.docx");
+        app.getKelas(0).createMateri("Pattern", "Strategy Pattern","mvc.docx");
         app.getKelas(0).createTugas("Rangkum MVC", "Rangkum Model View Controller");
         app.getKelas(0).createTugas("Rangkum Pattern", "Rangkum Strategy Pattern");
-        app.getMahasiswa(0).createTugas(new TugasMhs(app.getKelas(0).getTugas(0),"D:"));
+        app.getMahasiswa(0).createTugas(new TugasMhs(app.getKelas(0).getTugas(0),"tes_IMPAL IF-38-02_Rangkum MVC_move 30 juni.txt"));
         app.getKelas(0).createQuiz("Refactoring", app.getKelas(0));
         app.getKelas(0).getQuiz(0).createSoal("Mana yang benar:");
         app.getKelas(0).getQuiz(0).getSoal(0).createJawaban(1,"Bukan benar", false);
@@ -59,7 +64,7 @@ public class Klug {
         app.getMahasiswa(0).createKehadiran(app.getKelas(0), false);
         app.getMahasiswa(0).createKehadiran(app.getKelas(0), false);
         app.getMahasiswa(0).createKehadiran(app.getKelas(1), true);
+        app.getMahasiswa(0).createNilai(new Nilai("UTS", app.getKelas(0), 89));
         ControllerLogin c = new ControllerLogin(app, file);
     }
-    
 }

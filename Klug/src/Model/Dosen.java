@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author faiz
@@ -12,11 +14,13 @@ package Model;
 public class Dosen extends Orang{
     private String nip;
     private String kodeDosen;
+    private ArrayList<Kelas> kelas;
 
     public Dosen(String nip, String kodeDosen, String username, String password, String nama) {
         super(username, password, nama);
         this.nip = nip;
         this.kodeDosen = kodeDosen;
+        kelas = new ArrayList<>();
     }
 
     public String getNip() {
@@ -35,5 +39,15 @@ public class Dosen extends Orang{
         this.kodeDosen = kodeDosen;
     }
     
+    public ArrayList<Kelas> getKelasList() {
+        return kelas;
+    }
     
+    public Kelas getKelas(int i) {
+        return kelas.get(i);
+    }
+    
+    public void addKelas(Kelas kelas){
+        this.kelas.add(kelas);
+    }
 }

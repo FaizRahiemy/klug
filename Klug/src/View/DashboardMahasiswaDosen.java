@@ -12,12 +12,12 @@ import javax.swing.JButton;
  *
  * @author faiz
  */
-public class DashboardMahasiswa extends javax.swing.JFrame implements View{
+public class DashboardMahasiswaDosen extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form Login
      */
-    public DashboardMahasiswa() {
+    public DashboardMahasiswaDosen() {
         initComponents();
     }
 
@@ -32,7 +32,7 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
 
         backgroundKlug1 = new img.BackgroundKlug();
         btn_materi = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        judul = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         close1 = new javax.swing.JLabel();
         btn_tugas = new javax.swing.JButton();
@@ -41,6 +41,7 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
         btn_akun = new javax.swing.JButton();
         btn_logout = new javax.swing.JButton();
         btn_nilai = new javax.swing.JButton();
+        welkom = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -56,9 +57,9 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
         btn_materi.setText("Materi");
         btn_materi.setBorderPainted(false);
 
-        jLabel3.setFont(new java.awt.Font("Aller", 0, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Dashboard Mahasiswa");
+        judul.setFont(new java.awt.Font("Aller", 0, 36)); // NOI18N
+        judul.setForeground(new java.awt.Color(255, 255, 255));
+        judul.setText("Dashboard Mahasiswa");
 
         close.setBackground(new java.awt.Color(255, 255, 255));
         close.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
@@ -114,18 +115,14 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
         btn_nilai.setText("Nilai");
         btn_nilai.setBorderPainted(false);
 
+        welkom.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        welkom.setForeground(new java.awt.Color(238, 95, 1));
+        welkom.setText("Welkom");
+
         javax.swing.GroupLayout backgroundKlug1Layout = new javax.swing.GroupLayout(backgroundKlug1);
         backgroundKlug1.setLayout(backgroundKlug1Layout);
         backgroundKlug1Layout.setHorizontalGroup(
             backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backgroundKlug1Layout.createSequentialGroup()
-                .addGap(259, 259, 259)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
-                .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(backgroundKlug1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +133,18 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
                     .addComponent(btn_quiz, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_tugas, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_materi, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(59, 59, 59)
+                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(backgroundKlug1Layout.createSequentialGroup()
+                        .addComponent(judul)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                        .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(backgroundKlug1Layout.createSequentialGroup()
+                        .addComponent(welkom)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         backgroundKlug1Layout.setVerticalGroup(
             backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,9 +155,11 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
                         .addComponent(close, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel3)))
-                .addGap(90, 90, 90)
-                .addComponent(btn_materi)
+                        .addComponent(judul)))
+                .addGap(82, 82, 82)
+                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_materi)
+                    .addComponent(welkom))
                 .addGap(18, 18, 18)
                 .addComponent(btn_tugas)
                 .addGap(18, 18, 18)
@@ -162,7 +172,7 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
                 .addComponent(btn_akun)
                 .addGap(18, 18, 18)
                 .addComponent(btn_logout)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -185,7 +195,7 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
     }// </editor-fold>//GEN-END:initComponents
 
     private void close1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close1MouseReleased
-        this.setState(DashboardMahasiswa.ICONIFIED);
+        this.setState(DashboardMahasiswaDosen.ICONIFIED);
     }//GEN-LAST:event_close1MouseReleased
 
     private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
@@ -209,21 +219,23 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DashboardMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardMahasiswaDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DashboardMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardMahasiswaDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DashboardMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardMahasiswaDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DashboardMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardMahasiswaDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashboardMahasiswa().setVisible(true);
+                new DashboardMahasiswaDosen().setVisible(true);
             }
         });
     }
@@ -239,7 +251,8 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
     private javax.swing.JButton btn_tugas;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel judul;
+    private javax.swing.JLabel welkom;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBtn_akun() {
@@ -268,6 +281,14 @@ public class DashboardMahasiswa extends javax.swing.JFrame implements View{
 
     public JButton getBtn_tugas() {
         return btn_tugas;
+    }
+    
+    public void setWelkom(String isi) {
+        welkom.setText(isi);
+    }
+    
+    public void setJudul(String isi) {
+        judul.setText(isi);
     }
     
     @Override

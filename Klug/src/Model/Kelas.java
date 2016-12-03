@@ -76,8 +76,8 @@ public class Kelas {
         this.mahasiswa.add(mahasiswa);
     }
     
-    public void createMateri(String judulMateri, String isiMateri){
-        Materi materi = new Materi(judulMateri,isiMateri);
+    public void createMateri(String judulMateri, String isiMateri, String dir){
+        Materi materi = new Materi(judulMateri,isiMateri, dir);
         this.materi.add(materi);
     }
     

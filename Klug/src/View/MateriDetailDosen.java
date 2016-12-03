@@ -11,17 +11,18 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
  * @author faiz
  */
-public class MateriMahasiswa extends javax.swing.JFrame implements View{
+public class MateriDetailDosen extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form Login
      */
-    public MateriMahasiswa() {
+    public MateriDetailDosen() {
         initComponents();
     }
 
@@ -39,12 +40,15 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
         close = new javax.swing.JLabel();
         close1 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        pilihMateri = new javax.swing.JList<>();
-        judul = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         isiMateri = new javax.swing.JTextArea();
+        btn_simpan = new javax.swing.JButton();
+        judul = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        dir = new javax.swing.JTextField();
+        btn_upload = new javax.swing.JButton();
         btn_download = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,24 +87,38 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
         btn_back.setText("Kembali");
         btn_back.setBorderPainted(false);
 
-        jLabel1.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(238, 95, 1));
-        jLabel1.setText("Daftar Materi");
-
-        pilihMateri.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
-        pilihMateri.setForeground(new java.awt.Color(238, 95, 1));
-        pilihMateri.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        pilihMateri.setSelectionBackground(new java.awt.Color(238, 95, 1));
-        jScrollPane1.setViewportView(pilihMateri);
-
-        judul.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        judul.setForeground(new java.awt.Color(238, 95, 1));
-        judul.setText("Materi");
-
-        isiMateri.setEditable(false);
         isiMateri.setColumns(20);
         isiMateri.setRows(5);
         jScrollPane2.setViewportView(isiMateri);
+
+        btn_simpan.setBackground(new java.awt.Color(255, 255, 255));
+        btn_simpan.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_simpan.setForeground(new java.awt.Color(238, 95, 1));
+        btn_simpan.setText("Simpan");
+        btn_simpan.setBorderPainted(false);
+
+        judul.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(238, 95, 1));
+        jLabel1.setText("Judul");
+
+        jLabel2.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(238, 95, 1));
+        jLabel2.setText("Deskripsi Materi");
+
+        jLabel3.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(238, 95, 1));
+        jLabel3.setText("File Materi");
+
+        dir.setFont(new java.awt.Font("Aller", 0, 12)); // NOI18N
+        dir.setEnabled(false);
+
+        btn_upload.setBackground(new java.awt.Color(255, 255, 255));
+        btn_upload.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_upload.setForeground(new java.awt.Color(238, 95, 1));
+        btn_upload.setText("Upload");
+        btn_upload.setBorderPainted(false);
 
         btn_download.setBackground(new java.awt.Color(255, 255, 255));
         btn_download.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
@@ -122,19 +140,29 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
                 .addContainerGap())
             .addGroup(backgroundKlug1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(backgroundKlug1Layout.createSequentialGroup()
-                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_download, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
                         .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2))
                         .addGap(30, 30, 30)
-                        .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(judul)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(judul, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(backgroundKlug1Layout.createSequentialGroup()
+                            .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(backgroundKlug1Layout.createSequentialGroup()
+                                    .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_download, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(backgroundKlug1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(91, 91, 91)
+                                    .addComponent(dir, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(26, 26, 26)
+                            .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btn_upload, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         backgroundKlug1Layout.setVerticalGroup(
@@ -147,17 +175,23 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(judulHalaman)))
-                .addGap(55, 55, 55)
+                .addGap(60, 60, 60)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(judul))
+                    .addComponent(judul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(btn_upload)
+                    .addComponent(dir, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_back)
+                    .addComponent(btn_simpan)
                     .addComponent(btn_download))
                 .addGap(37, 37, 37))
         );
@@ -182,7 +216,7 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
     }// </editor-fold>//GEN-END:initComponents
 
     private void close1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close1MouseReleased
-        this.setState(MateriMahasiswa.ICONIFIED);
+        this.setState(MateriDetailDosen.ICONIFIED);
     }//GEN-LAST:event_close1MouseReleased
 
     private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
@@ -206,14 +240,38 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MateriDetailDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MateriDetailDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MateriDetailDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MateriDetailDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -226,7 +284,7 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MateriMahasiswa().setVisible(true);
+                new MateriDetailDosen().setVisible(true);
             }
         });
     }
@@ -235,30 +293,29 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
     private img.BackgroundKlug backgroundKlug1;
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_download;
+    private javax.swing.JButton btn_simpan;
+    private javax.swing.JButton btn_upload;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
+    private javax.swing.JTextField dir;
     private javax.swing.JTextArea isiMateri;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel judul;
+    private javax.swing.JTextField judul;
     private javax.swing.JLabel judulHalaman;
-    private javax.swing.JList<String> pilihMateri;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBtn_back() {
         return btn_back;
     }
     
-    public JButton getBtnDownload() {
-        return btn_download;
+    public JButton getBtnSimpan() {
+        return btn_simpan;
     }
-    
-    public JList getPilihMateri(){
-        return pilihMateri;
-    }
-    
-    public JLabel getJudul(){
+
+    public JTextField getJudul() {
         return judul;
     }
     
@@ -269,16 +326,25 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
     public JLabel getJudulHalaman(){
         return judulHalaman;
     }
+
+    public JButton getBtn_upload() {
+        return btn_upload;
+    }
+    
+    public JButton getBtn_download() {
+        return btn_download;
+    }
+
+    public JTextField getDir() {
+        return dir;
+    }
     
     @Override
     public void addActionListener(ActionListener e) {
         btn_back.addActionListener(e);
-        //pilihMateri.addActionListener(e);
-    }
-
-    @Override
-    public synchronized void addMouseListener(MouseListener l) {
-        pilihMateri.addMouseListener(l);
+        btn_simpan.addActionListener(e);
+        btn_upload.addActionListener(e);
+        btn_download.addActionListener(e);
     }
 
 }

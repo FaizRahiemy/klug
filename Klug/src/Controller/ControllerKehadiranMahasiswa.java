@@ -42,7 +42,7 @@ public class ControllerKehadiranMahasiswa implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         Object x = e.getSource();
         if(x.equals(kehadiran.getBtn_back())){
-            ControllerDashboardMahasiswa dashboardMhs = new ControllerDashboardMahasiswa(app,file,userId);
+            ControllerDashboardMahasiswaDosen dashboardMhs = new ControllerDashboardMahasiswaDosen(app,file,userId);
         }
         kehadiran.dispose();
     }

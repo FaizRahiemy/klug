@@ -17,13 +17,13 @@ import javax.swing.JOptionPane;
  *
  * @author faiz
  */
-public class ControllerPilihKelasMateriMahasiswa implements ActionListener{
+public class ControllerPilihKelasTugasDosen implements ActionListener{
     private PilihKelas pilKelMateri = null;
     private Application app;
     private FileIO file;
     private int userId;
     
-    public ControllerPilihKelasMateriMahasiswa(Application app, FileIO file, int userId){
+    public ControllerPilihKelasTugasDosen(Application app, FileIO file, int userId){
         pilKelMateri = new PilihKelas();
         this.app = app;
         this.file = file;
@@ -31,11 +31,11 @@ public class ControllerPilihKelasMateriMahasiswa implements ActionListener{
         pilKelMateri.setResizable(false);
         pilKelMateri.getBtn_back().addActionListener(this);
         pilKelMateri.getBtn_pilih().addActionListener(this);
-        pilKelMateri.getHalaman().setText("Materi");
+        pilKelMateri.getHalaman().setText("Tugas");
         DefaultListModel modelList = new DefaultListModel();
         pilKelMateri.getPilihKelas().setModel(modelList);
-        for(int i=0;i<app.getMahasiswa(userId).getKelasList().size();i++){
-            modelList.addElement(app.getMahasiswa(userId).getKelas(i).getNamaMataKuliah());
+        for(int i=0;i<app.getDosen(userId).getKelasList().size();i++){
+            modelList.addElement(app.getDosen(userId).getKelas(i).getNamaMataKuliah());
         }
         pilKelMateri.getPilihKelas().setSelectedIndex(0);
         pilKelMateri.setVisible(true);
@@ -47,7 +47,7 @@ public class ControllerPilihKelasMateriMahasiswa implements ActionListener{
         if(x.equals(pilKelMateri.getBtn_back())){
             ControllerDashboardMahasiswaDosen dashMhs = new ControllerDashboardMahasiswaDosen(app,file,userId);
         }else if(x.equals(pilKelMateri.getBtn_pilih())){
-            ControllerMateriMahasiswa materiMhs = new ControllerMateriMahasiswa(app,file,userId,pilKelMateri.getPilihKelas().getSelectedIndex());
+            ControllerPilihTugasDosen materiMhs = new ControllerPilihTugasDosen(app,file,userId,pilKelMateri.getPilihKelas().getSelectedIndex());
         }
         pilKelMateri.dispose();
     }

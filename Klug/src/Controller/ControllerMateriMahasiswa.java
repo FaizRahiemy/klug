@@ -13,7 +13,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 /**
  *
@@ -34,6 +39,7 @@ public class ControllerMateriMahasiswa extends MouseAdapter implements ActionLis
         this.kelasId = kelasId;
         materi.setResizable(false);
         materi.getBtn_back().addActionListener(this);
+        materi.getBtnDownload().addActionListener(this);
         materi.getPilihMateri().addMouseListener(this);
         materi.getJudulHalaman().setText("Materi " + app.getMahasiswa(userId).getKelas(kelasId).getNamaMataKuliah());
         DefaultListModel modelList = new DefaultListModel();
@@ -60,8 +66,25 @@ public class ControllerMateriMahasiswa extends MouseAdapter implements ActionLis
         Object x = e.getSource();
         if(x.equals(materi.getBtn_back())){
             ControllerPilihKelasMateriMahasiswa pilKelMateri = new ControllerPilihKelasMateriMahasiswa(app,file,userId);
+            materi.dispose();
+        }else if(x.equals(materi.getBtnDownload())){
+            JFileChooser fc = new JFileChooser("D:/");
+            fc.setAcceptAllFileFilterUsed(false);
+            File ff = new File("materi/"+app.getMahasiswa(userId).getKelas(kelasId).getDosen().getUsername()+"/"+app.getMahasiswa(userId).getKelas(kelasId).getMateri(materi.getPilihMateri().getSelectedIndex()).getDir());
+            fc.setSelectedFile(ff);
+            
+            fc.setCurrentDirectory(new File("D:/"));
+            int returnValue = fc.showSaveDialog(null);
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                File newFile = fc.getSelectedFile();
+                try {
+                    Files.copy(ff.toPath(), newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    JOptionPane.showMessageDialog(materi, "Download Materi Sukses");
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(materi,"Coba save di folder lain!");
+                }
+            }
         }
-        materi.dispose();
     }
 
     @Override

@@ -50,8 +50,8 @@ public class ControllerLogin implements ActionListener, KeyListener{
             }else{
                 String pass = login.getPassword();
                 if (pass.equals(app.getOrangList().get(result).getPassword())){
-                    if (app.getOrangList().get(result) instanceof Mahasiswa){
-                        ControllerDashboardMahasiswa dashMhs = new ControllerDashboardMahasiswa(app,file,result);
+                    if ((app.getOrangList().get(result) instanceof Mahasiswa) || (app.getOrangList().get(result) instanceof Dosen)) {
+                        ControllerDashboardMahasiswaDosen dashMhs = new ControllerDashboardMahasiswaDosen(app,file,result);
                     }else{
                         JOptionPane.showMessageDialog(login, "Halo "+app.getOrangList().get(result).getNama()+", Login Berhasil");
                     }
@@ -84,7 +84,7 @@ public class ControllerLogin implements ActionListener, KeyListener{
                 String pass = login.getPassword();
                 if (pass.equals(app.getOrangList().get(result).getPassword())){
                     if (app.getOrangList().get(result) instanceof Mahasiswa){
-                        ControllerDashboardMahasiswa dashMhs = new ControllerDashboardMahasiswa(app,file,result);
+                        ControllerDashboardMahasiswaDosen dashMhs = new ControllerDashboardMahasiswaDosen(app,file,result);
                     }else{
                         JOptionPane.showMessageDialog(login, "Halo "+app.getOrangList().get(result).getNama()+", Login Berhasil");
                     }

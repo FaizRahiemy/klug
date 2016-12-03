@@ -45,7 +45,7 @@ public class ControllerPilihKelasNilaiMahasiswa implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         Object x = e.getSource();
         if(x.equals(pilKel.getBtn_back())){
-            ControllerDashboardMahasiswa dashMhs = new ControllerDashboardMahasiswa(app,file,userId);
+            ControllerDashboardMahasiswaDosen dashMhs = new ControllerDashboardMahasiswaDosen(app,file,userId);
         }else if(x.equals(pilKel.getBtn_pilih())){
             ControllerNilaiMahasiswa nilaiMhs = new ControllerNilaiMahasiswa(app,file,userId,pilKel.getPilihKelas().getSelectedIndex());
         }

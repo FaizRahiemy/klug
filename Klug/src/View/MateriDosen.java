@@ -16,12 +16,12 @@ import javax.swing.JTextArea;
  *
  * @author faiz
  */
-public class MateriMahasiswa extends javax.swing.JFrame implements View{
+public class MateriDosen extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form Login
      */
-    public MateriMahasiswa() {
+    public MateriDosen() {
         initComponents();
     }
 
@@ -45,7 +45,8 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
         judul = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         isiMateri = new javax.swing.JTextArea();
-        btn_download = new javax.swing.JButton();
+        btn_edit = new javax.swing.JButton();
+        btn_tambah = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -102,11 +103,17 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
         isiMateri.setRows(5);
         jScrollPane2.setViewportView(isiMateri);
 
-        btn_download.setBackground(new java.awt.Color(255, 255, 255));
-        btn_download.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        btn_download.setForeground(new java.awt.Color(238, 95, 1));
-        btn_download.setText("Download");
-        btn_download.setBorderPainted(false);
+        btn_edit.setBackground(new java.awt.Color(255, 255, 255));
+        btn_edit.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_edit.setForeground(new java.awt.Color(238, 95, 1));
+        btn_edit.setText("Edit");
+        btn_edit.setBorderPainted(false);
+
+        btn_tambah.setBackground(new java.awt.Color(255, 255, 255));
+        btn_tambah.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_tambah.setForeground(new java.awt.Color(238, 95, 1));
+        btn_tambah.setText("Tambah Materi");
+        btn_tambah.setBorderPainted(false);
 
         javax.swing.GroupLayout backgroundKlug1Layout = new javax.swing.GroupLayout(backgroundKlug1);
         backgroundKlug1.setLayout(backgroundKlug1Layout);
@@ -126,7 +133,9 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
                         .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_download, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
                         .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -158,7 +167,8 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
                 .addGap(18, 18, 18)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_back)
-                    .addComponent(btn_download))
+                    .addComponent(btn_edit)
+                    .addComponent(btn_tambah))
                 .addGap(37, 37, 37))
         );
 
@@ -182,7 +192,7 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
     }// </editor-fold>//GEN-END:initComponents
 
     private void close1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close1MouseReleased
-        this.setState(MateriMahasiswa.ICONIFIED);
+        this.setState(MateriDosen.ICONIFIED);
     }//GEN-LAST:event_close1MouseReleased
 
     private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
@@ -206,14 +216,22 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MateriDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MateriDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MateriDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MateriMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MateriDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -226,7 +244,7 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MateriMahasiswa().setVisible(true);
+                new MateriDosen().setVisible(true);
             }
         });
     }
@@ -234,7 +252,8 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private img.BackgroundKlug backgroundKlug1;
     private javax.swing.JButton btn_back;
-    private javax.swing.JButton btn_download;
+    private javax.swing.JButton btn_edit;
+    private javax.swing.JButton btn_tambah;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
     private javax.swing.JTextArea isiMateri;
@@ -250,8 +269,12 @@ public class MateriMahasiswa extends javax.swing.JFrame implements View{
         return btn_back;
     }
     
-    public JButton getBtnDownload() {
-        return btn_download;
+    public JButton getBtnEdit() {
+        return btn_edit;
+    }
+    
+    public JButton getBtnTambah() {
+        return btn_tambah;
     }
     
     public JList getPilihMateri(){
