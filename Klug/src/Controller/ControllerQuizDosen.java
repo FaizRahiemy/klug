@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  *
  * @author faiz
  */
-public class ControllerQuizMahasiswa extends MouseAdapter implements ActionListener{
+public class ControllerQuizDosen extends MouseAdapter implements ActionListener{
     private QuizMahasiswa pilKel = null;
     private Application app;
     private FileIO file;
@@ -30,7 +30,7 @@ public class ControllerQuizMahasiswa extends MouseAdapter implements ActionListe
     
     private JawabanMahasiswa jawaban;
     
-    public ControllerQuizMahasiswa(Application app, FileIO file, int userId, int kelasId, int quizId){
+    public ControllerQuizDosen(Application app, FileIO file, int userId, int kelasId, int quizId){
         pilKel = new QuizMahasiswa();
         this.app = app;
         this.file = file;
@@ -42,9 +42,7 @@ public class ControllerQuizMahasiswa extends MouseAdapter implements ActionListe
         pilKel.getBtn_finish().addActionListener(this);
         for (int i=0;i<5;i++){
             pilKel.getJawaban(i+1).addActionListener(this);
-            pilKel.getJaw(i+1).setVisible(false);
         }
-        pilKel.getBtn_tambah().setVisible(false);
         pilKel.getPilihQuiz().addMouseListener(this);
         pilKel.getJudulHalaman().setText("Quiz " + app.getMahasiswa(userId).getKelas(kelasId).getQuiz(quizId).getJudulQuiz());
         pilKel.getJudul().setText("Soal 1");
