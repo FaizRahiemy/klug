@@ -47,6 +47,7 @@ public class MateriDosen extends javax.swing.JFrame implements View{
         isiMateri = new javax.swing.JTextArea();
         btn_edit = new javax.swing.JButton();
         btn_tambah = new javax.swing.JButton();
+        btn_hapus = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -110,10 +111,16 @@ public class MateriDosen extends javax.swing.JFrame implements View{
         btn_edit.setBorderPainted(false);
 
         btn_tambah.setBackground(new java.awt.Color(255, 255, 255));
-        btn_tambah.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_tambah.setFont(new java.awt.Font("Aller", 0, 14)); // NOI18N
         btn_tambah.setForeground(new java.awt.Color(238, 95, 1));
         btn_tambah.setText("Tambah Materi");
         btn_tambah.setBorderPainted(false);
+
+        btn_hapus.setBackground(new java.awt.Color(255, 255, 255));
+        btn_hapus.setFont(new java.awt.Font("Aller", 0, 14)); // NOI18N
+        btn_hapus.setForeground(new java.awt.Color(238, 95, 1));
+        btn_hapus.setText("Hapus Materi");
+        btn_hapus.setBorderPainted(false);
 
         javax.swing.GroupLayout backgroundKlug1Layout = new javax.swing.GroupLayout(backgroundKlug1);
         backgroundKlug1.setLayout(backgroundKlug1Layout);
@@ -122,7 +129,7 @@ public class MateriDosen extends javax.swing.JFrame implements View{
             .addGroup(backgroundKlug1Layout.createSequentialGroup()
                 .addGap(259, 259, 259)
                 .addComponent(judulHalaman)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 371, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,7 +140,9 @@ public class MateriDosen extends javax.swing.JFrame implements View{
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
                         .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
@@ -144,7 +153,7 @@ public class MateriDosen extends javax.swing.JFrame implements View{
                         .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(judul)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         backgroundKlug1Layout.setVerticalGroup(
             backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +177,8 @@ public class MateriDosen extends javax.swing.JFrame implements View{
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_back)
                     .addComponent(btn_edit)
-                    .addComponent(btn_tambah))
+                    .addComponent(btn_tambah)
+                    .addComponent(btn_hapus))
                 .addGap(37, 37, 37))
         );
 
@@ -253,6 +263,7 @@ public class MateriDosen extends javax.swing.JFrame implements View{
     private img.BackgroundKlug backgroundKlug1;
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_edit;
+    private javax.swing.JButton btn_hapus;
     private javax.swing.JButton btn_tambah;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
@@ -275,6 +286,10 @@ public class MateriDosen extends javax.swing.JFrame implements View{
     
     public JButton getBtnTambah() {
         return btn_tambah;
+    }
+    
+    public JButton getBtnHapus() {
+        return btn_hapus;
     }
     
     public JList getPilihMateri(){

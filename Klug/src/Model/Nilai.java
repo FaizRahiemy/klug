@@ -11,12 +11,17 @@ package Model;
  */
 public class Nilai {
     private String judulNilai;
+    private Nilai nil;
     private Kelas kelas;
     private double nilai;
 
-    public Nilai(String judulNilai, Kelas kelas, double nilai) {
+    public Nilai(String judulNilai, Kelas kelas) {
         this.judulNilai = judulNilai;
         this.kelas = kelas;
+    }
+    
+    public Nilai(Nilai nil, double nilai) {
+        this.nil = nil;
         this.nilai = nilai;
     }
 
@@ -38,6 +43,14 @@ public class Nilai {
 
     public Kelas getKelas() {
         return kelas;
+    }
+
+    public Nilai getNil() {
+        return nil;
+    }
+
+    public void setNil(Nilai nil) {
+        this.nil = nil;
     }
     
 }

@@ -40,6 +40,7 @@ public class ControllerMateriDosen extends MouseAdapter implements ActionListene
         materi.getBtn_back().addActionListener(this);
         materi.getBtnEdit().addActionListener(this);
         materi.getBtnTambah().addActionListener(this);
+        materi.getBtnHapus().addActionListener(this);
         materi.getPilihMateri().addMouseListener(this);
         materi.getJudulHalaman().setText("Materi " + app.getDosen(userId).getKelas(kelasId).getNamaMataKuliah());
         DefaultListModel modelList = new DefaultListModel();
@@ -74,11 +75,29 @@ public class ControllerMateriDosen extends MouseAdapter implements ActionListene
         }else if(x.equals(materi.getBtnTambah())){
             ControllerMateriDetailDosen materidetail = new ControllerMateriDetailDosen(app, file, userId, kelasId, -1);
             materi.dispose();
+        }else if(x.equals(materi.getBtnHapus())){
+            if (app.getDosen(userId).getKelas(kelasId).getMateriList().size() > 0){
+                int reply = JOptionPane.showConfirmDialog(materi, "Yakin akan hapus materi "+(app.getDosen(userId).getKelas(kelasId).getMateri(materi.getPilihMateri().getSelectedIndex()).getJudulMateri())+"?", "Yakin?", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION) {
+                    app.getDosen(userId).getKelas(kelasId).getMateriList().remove(materi.getPilihMateri().getSelectedIndex());
+                    DefaultListModel modelList = new DefaultListModel();
+                    materi.getPilihMateri().setModel(modelList);
+                    for(int i=0;i<app.getDosen(userId).getKelas(kelasId).getMateriList().size();i++){
+                        modelList.addElement(app.getDosen(userId).getKelas(kelasId).getMateri(i).getJudulMateri());
+                    }
+                    if (app.getDosen(userId).getKelas(kelasId).getMateriList().size() == 1){
+                        materi.getJudul().setText(app.getDosen(userId).getKelas(kelasId).getMateri(0).getJudulMateri());
+                        materi.getMateri().setText(app.getDosen(userId).getKelas(kelasId).getMateri(0).getIsiMateri());
+                    }
+                    materi.getPilihMateri().setSelectedIndex(0);
+                    JOptionPane.showMessageDialog(materi, "Berhasil hapus materi!");
+                }
+            }
         }
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
         Object x = e.getSource();
         if (x.equals(materi.getPilihMateri())){
             if (app.getKelas(kelasId).getMateriList().size()>0){

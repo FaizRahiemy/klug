@@ -35,6 +35,8 @@ public class ControllerPilihQuizMahasiswa extends MouseAdapter implements Action
         pilKel.setResizable(false);
         pilKel.getBtn_back().addActionListener(this);
         pilKel.getBtn_kerjakan().addActionListener(this);
+        pilKel.getBtn_tambah().setVisible(false);
+        pilKel.getBtn_hapus().setVisible(false);
         pilKel.getPilihQuiz().addMouseListener(this);
         pilKel.getJudulHalaman().setText("Quiz " + app.getMahasiswa(userId).getKelas(kelasId).getNamaMataKuliah());
         DefaultListModel modelList = new DefaultListModel();
@@ -90,7 +92,7 @@ public class ControllerPilihQuizMahasiswa extends MouseAdapter implements Action
     }
     
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
         Object x = e.getSource();
         if (x.equals(pilKel.getPilihQuiz())){
             if (app.getKelas(kelasId).getQuizList().size()>0){

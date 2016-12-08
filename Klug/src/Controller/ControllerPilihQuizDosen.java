@@ -35,37 +35,19 @@ public class ControllerPilihQuizDosen extends MouseAdapter implements ActionList
         pilKel.setResizable(false);
         pilKel.getBtn_back().addActionListener(this);
         pilKel.getBtn_kerjakan().addActionListener(this);
+        pilKel.getBtn_kerjakan().setText("Lihat");
         pilKel.getPilihQuiz().addMouseListener(this);
-        pilKel.getJudulHalaman().setText("Quiz " + app.getMahasiswa(userId).getKelas(kelasId).getNamaMataKuliah());
+        pilKel.getBtn_tambah().addActionListener(this);
+        pilKel.getBtn_hapus().addActionListener(this);
+        pilKel.getJudulHalaman().setText("Quiz " + app.getDosen(userId).getKelas(kelasId).getNamaMataKuliah());
         DefaultListModel modelList = new DefaultListModel();
         pilKel.getPilihQuiz().setModel(modelList);
-        if (app.getMahasiswa(userId).getKelas(kelasId).getQuizList().size()>0){
-            for(int i=0;i<app.getMahasiswa(userId).getKelas(kelasId).getQuizList().size();i++){
-                modelList.addElement(app.getKelas(kelasId).getQuiz(i).getJudulQuiz());
+        if (app.getDosen(userId).getKelas(kelasId).getQuizList().size()>0){
+            for(int i=0;i<app.getDosen(userId).getKelas(kelasId).getQuizList().size();i++){
+                modelList.addElement(app.getDosen(userId).getKelas(kelasId).getQuiz(i).getJudulQuiz());
                 if (i==0){
-                    pilKel.getJudul().setText(app.getMahasiswa(userId).getKelas(kelasId).getQuiz(0).getJudulQuiz());
-                    boolean udah=false;
-                int result = -1;
-                for(int j=0;j<app.getMahasiswa(userId).getJawabanList().size();j++){
-                    if (app.getMahasiswa(userId).getJawaban(j).getQuiz() == app.getMahasiswa(userId).getKelas(kelasId).getQuiz(0)){
-                        result = j;
-                        udah = true;
-                        break;
-                    }
-                }
-                String status;
-                if (udah){
-                    if (app.getMahasiswa(userId).getJawaban(result).isSudah()){
-                        status = "Sudah dikerjakan";
-                        pilKel.getBtn_kerjakan().setText("Lihat");
-                    }else{
-                        status = "Belum selesai";
-                        pilKel.getBtn_kerjakan().setText("Lanjutkan");
-                    }
-                }else{
-                    status = "Belum dikerjakan";
-                }
-                    pilKel.getStatus().setText("Status : " + status + " \nJumlah Soal : "+app.getMahasiswa(userId).getKelas(kelasId).getQuiz(0).getSoalList().size());
+                    pilKel.getJudul().setText(app.getDosen(userId).getKelas(kelasId).getQuiz(0).getJudulQuiz());
+                    pilKel.getStatus().setText("Jumlah Soal : "+app.getDosen(userId).getKelas(kelasId).getQuiz(0).getSoalList().size());
                 }
             }
         }else{
@@ -82,49 +64,49 @@ public class ControllerPilihQuizDosen extends MouseAdapter implements ActionList
     public void actionPerformed(ActionEvent e) {
         Object x = e.getSource();
         if(x.equals(pilKel.getBtn_back())){
-            ControllerPilihKelasQuizMahasiswa dashMhs = new ControllerPilihKelasQuizMahasiswa(app,file,userId);
+            ControllerPilihKelasQuizDosen dashMhs = new ControllerPilihKelasQuizDosen(app,file,userId);
+            pilKel.dispose();
         }else if(x.equals(pilKel.getBtn_kerjakan())){
-            ControllerQuizMahasiswa quizsMhs = new ControllerQuizMahasiswa(app,file,userId,kelasId,pilKel.getPilihQuiz().getSelectedIndex());
+            ControllerQuizDosen quizsMhs = new ControllerQuizDosen(app,file,userId,kelasId,pilKel.getPilihQuiz().getSelectedIndex());
+            pilKel.dispose();
+        }else if(x.equals(pilKel.getBtn_tambah())){
+            Quiz quiz = new Quiz("Baru", app.getDosen(userId).getKelas(kelasId), new Nilai("Quiz Baru", app.getDosen(userId).getKelas(kelasId)));
+            quiz.createSoal(new Soal("Soal Baru"));
+            quiz.getSoal(0).createJawaban("jawaban baru", true);
+            quiz.getSoal(0).createJawaban("jawaban baru", false);
+            quiz.getSoal(0).createJawaban("jawaban baru", false);
+            quiz.getSoal(0).createJawaban("jawaban baru", false);
+            quiz.getSoal(0).createJawaban("jawaban baru", false);
+            app.getDosen(userId).getKelas(kelasId).createQuiz(quiz);
+            ControllerQuizDosen quizsMhs = new ControllerQuizDosen(app,file,userId,kelasId,app.getDosen(userId).getKelas(kelasId).getQuizList().size()-1);
+            pilKel.dispose();
+        }else if(x.equals(pilKel.getBtn_hapus())){
+            if (app.getDosen(userId).getKelas(kelasId).getQuizList().size() > 0){
+                int reply = JOptionPane.showConfirmDialog(pilKel, "Yakin akan hapus quiz "+(app.getDosen(userId).getKelas(kelasId).getQuiz(pilKel.getPilihQuiz().getSelectedIndex()).getJudulQuiz())+"?", "Yakin?", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION) {
+                    app.getDosen(userId).getKelas(kelasId).getQuizList().remove(pilKel.getPilihQuiz().getSelectedIndex());
+                    DefaultListModel modelList = new DefaultListModel();
+                    pilKel.getPilihQuiz().setModel(modelList);
+                    for(int i=0;i<app.getDosen(userId).getKelas(kelasId).getQuizList().size();i++){
+                        modelList.addElement(app.getDosen(userId).getKelas(kelasId).getQuiz(i).getJudulQuiz());
+                    }
+                    if (app.getDosen(userId).getKelas(kelasId).getQuizList().size() == 1){
+                        pilKel.getStatus().setText("Jumlah Soal : "+app.getDosen(userId).getKelas(kelasId).getQuiz(0).getSoalList().size());
+                    }
+                    pilKel.getPilihQuiz().setSelectedIndex(0);
+                    JOptionPane.showMessageDialog(pilKel, "Berhasil hapus quiz!");
+                }
+            }
         }
-        pilKel.dispose();
     }
     
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
         Object x = e.getSource();
         if (x.equals(pilKel.getPilihQuiz())){
             if (app.getKelas(kelasId).getQuizList().size()>0){
-                pilKel.getJudul().setText(app.getMahasiswa(userId).getKelas(kelasId).getQuiz(pilKel.getPilihQuiz().getSelectedIndex()).getJudulQuiz());
-                boolean udah=false;
-                int result = -1;
-                for(int i=0;i<app.getMahasiswa(userId).getJawabanList().size();i++){
-                    if (app.getMahasiswa(userId).getJawaban(i).getQuiz() == app.getMahasiswa(userId).getKelas(kelasId).getQuiz(pilKel.getPilihQuiz().getSelectedIndex())){
-                        result = i;
-                        udah = true;
-                        break;
-                    }
-                }
-                String status;
-                String nilai = "";
-                if (udah){
-                    if (app.getMahasiswa(userId).getJawaban(result).isSudah()){
-                        status = "Sudah dikerjakan";
-                        pilKel.getBtn_kerjakan().setText("Lihat");
-                        for (int i=0;i<app.getMahasiswa(userId).getNilaiList().size();i++){
-                            if (app.getMahasiswa(userId).getNilai(i).getJudulNilai() == "Quiz "+app.getMahasiswa(userId).getJawaban(result).getQuiz().getJudulQuiz()){
-                                nilai = "Nilai : "+app.getMahasiswa(userId).getNilai(i);
-                                break;
-                            };
-                        }
-                    }else{
-                        status = "Belum selesai";
-                        pilKel.getBtn_kerjakan().setText("Lanjutkan");
-                    }
-                }else{
-                    status = "Belum dikerjakan";
-                    pilKel.getBtn_kerjakan().setText("Kerjakan");
-                }
-                pilKel.getStatus().setText("Status : " + status + " \nJumlah Soal : "+app.getMahasiswa(userId).getKelas(kelasId).getQuiz(pilKel.getPilihQuiz().getSelectedIndex()).getSoalList().size()+"\n"+nilai);
+                pilKel.getJudul().setText(app.getDosen(userId).getKelas(kelasId).getQuiz(pilKel.getPilihQuiz().getSelectedIndex()).getJudulQuiz());
+                pilKel.getStatus().setText("Jumlah Soal : "+app.getDosen(userId).getKelas(kelasId).getQuiz(pilKel.getPilihQuiz().getSelectedIndex()).getSoalList().size());
             }
         }
     }

@@ -43,12 +43,16 @@ public class ControllerAkunUser implements ActionListener{
         if(x.equals(akun.getBtnSimpan())){
             String pass = akun.getPassword();
             String pass1 = akun.getPassword1();
-            if (pass != ""){
+            if (pass.isEmpty() == false){
                 if (pass.equals(pass1)){
                     app.getOrang(userId).setPassword(pass);
                     JOptionPane.showMessageDialog(akun, "Ubah password berhasil!");
                     akun.dispose();
-                    ControllerDashboardMahasiswaDosen dash = new ControllerDashboardMahasiswaDosen(app, file, userId);
+                    if (app.getOrang(userId) instanceof Admin){
+                        ControllerDashboardAdmin dash = new ControllerDashboardAdmin(app, file, userId);
+                    }else{
+                        ControllerDashboardMahasiswaDosen dash = new ControllerDashboardMahasiswaDosen(app, file, userId);
+                    }
                 }else{
                     JOptionPane.showMessageDialog(akun, "Password tidak sama!");
                 }
@@ -57,7 +61,11 @@ public class ControllerAkunUser implements ActionListener{
             }
         }else{
             akun.dispose();
-            ControllerDashboardMahasiswaDosen dash = new ControllerDashboardMahasiswaDosen(app, file, userId);
+            if (app.getOrang(userId) instanceof Admin){
+                ControllerDashboardAdmin dash = new ControllerDashboardAdmin(app, file, userId);
+            }else{
+                ControllerDashboardMahasiswaDosen dash = new ControllerDashboardMahasiswaDosen(app, file, userId);
+            }
         }
     }
 }

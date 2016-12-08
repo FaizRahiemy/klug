@@ -67,6 +67,6 @@ public class JawabanMahasiswa {
         }
         nilai = (benar/soal)*100;
         sudah = true;
-        mahasiswa.getNilaiList().add(new Nilai("Quiz "+quiz.getJudulQuiz(), quiz.getKelas(), nilai));
+        mahasiswa.getNilaiList().add(new Nilai(quiz.getNilai(), nilai));
     }
 }

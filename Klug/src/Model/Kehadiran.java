@@ -12,18 +12,20 @@ import java.util.Date;
  * @author faiz
  */
 public class Kehadiran {
+    private Kehadiran kehadiran;
     private String nama;
     private String tanggal;
     private Kelas kelas;
     private boolean hadir;
 
-    public Kehadiran(String nama, Kelas kelas, boolean hadir) {
-        this.nama = nama;
-        this.kelas = kelas;
+    public Kehadiran(Kehadiran kehadiran, boolean hadir) {
+        this.kehadiran = kehadiran;
         this.hadir = hadir;
     }
     
-    public Kehadiran(Kelas kelas, boolean hadir) {
+    public Kehadiran(String nama, String tanggal, Kelas kelas, boolean hadir) {
+        this.nama = nama;
+        this.tanggal = tanggal;
         this.kelas = kelas;
         this.hadir = hadir;
     }
@@ -58,6 +60,22 @@ public class Kehadiran {
 
     public void setKelas(Kelas kelas) {
         this.kelas = kelas;
+    }
+
+    public Kehadiran getKehadiran() {
+        return kehadiran;
+    }
+
+    public void setKehadiran(Kehadiran kehadiran) {
+        this.kehadiran = kehadiran;
+    }
+    
+    public void toggleHadir() {
+        if (hadir){
+            hadir = false;
+        }else{
+            hadir = true;
+        }
     }
     
 }

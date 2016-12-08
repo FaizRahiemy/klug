@@ -13,12 +13,14 @@ import java.util.ArrayList;
  */
 public class Quiz {
     private String judulQuiz;
+    private Nilai nilai;
     private Kelas kelas;
     private ArrayList<Soal> soal;
 
-    public Quiz(String judulQuiz, Kelas kelas) {
+    public Quiz(String judulQuiz, Kelas kelas, Nilai nilai) {
         this.judulQuiz = judulQuiz;
         this.kelas = kelas;
+        this.nilai = nilai;
         soal = new ArrayList<>();
     }
 
@@ -38,11 +40,20 @@ public class Quiz {
         return soal.get(i);
     }
     
-    public void createSoal(String soal){
-        this.soal.add(new Soal(soal));
+    public void createSoal(Soal soal){
+        this.soal.add(soal);
     }
     
     public Kelas getKelas() {
         return kelas;
     }
+
+    public Nilai getNilai() {
+        return nilai;
+    }
+
+    public void setNilai(Nilai nilai) {
+        this.nilai = nilai;
+    }
+    
 }

@@ -39,6 +39,7 @@ public class ControllerPilihTugasDosen extends MouseAdapter implements ActionLis
         pilihTugas.setResizable(false);
         pilihTugas.getBtn_back().addActionListener(this);
         pilihTugas.getBtn_tambah().addActionListener(this);
+        pilihTugas.getBtn_hapus().addActionListener(this);
         pilihTugas.getBtn_lihat().addActionListener(this);
         pilihTugas.getPilihTugas().addMouseListener(this);
         pilihTugas.getJudulHalaman().setText("Tugas " + app.getDosen(userId).getKelas(kelasId).getNamaMataKuliah());
@@ -66,7 +67,7 @@ public class ControllerPilihTugasDosen extends MouseAdapter implements ActionLis
     public void actionPerformed(ActionEvent e) {
         Object x = e.getSource();
         if(x.equals(pilihTugas.getBtn_back())){
-            ControllerPilihKelasMateriDosen pilKelMateri = new ControllerPilihKelasMateriDosen(app,file,userId);
+            ControllerPilihKelasTugasDosen pilKelMateri = new ControllerPilihKelasTugasDosen(app,file,userId);
             pilihTugas.dispose();
         }else if(x.equals(pilihTugas.getBtn_lihat())){
             ControllerTugasDosen materidetail = new ControllerTugasDosen(app, file, userId, kelasId, pilihTugas.getPilihTugas().getSelectedIndex());
@@ -74,14 +75,32 @@ public class ControllerPilihTugasDosen extends MouseAdapter implements ActionLis
         }else if(x.equals(pilihTugas.getBtn_tambah())){
             ControllerTugasDosen materidetail = new ControllerTugasDosen(app, file, userId, kelasId, -1);
             pilihTugas.dispose();
+        }else if(x.equals(pilihTugas.getBtn_hapus())){
+            if (app.getDosen(userId).getKelas(kelasId).getTugasList().size() > 0){
+                int reply = JOptionPane.showConfirmDialog(pilihTugas, "Yakin akan hapus tugas "+(app.getDosen(userId).getKelas(kelasId).getTugas(pilihTugas.getPilihTugas().getSelectedIndex()).getJudulTugas())+"?", "Yakin?", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION) {
+                    app.getDosen(userId).getKelas(kelasId).getTugasList().remove(pilihTugas.getPilihTugas().getSelectedIndex());
+                    DefaultListModel modelList = new DefaultListModel();
+                    pilihTugas.getPilihTugas().setModel(modelList);
+                    for(int i=0;i<app.getDosen(userId).getKelas(kelasId).getTugasList().size();i++){
+                        modelList.addElement(app.getDosen(userId).getKelas(kelasId).getTugas(i).getJudulTugas());
+                    }
+                    if (app.getDosen(userId).getKelas(kelasId).getTugasList().size() == 1){
+                        pilihTugas.getJudul().setText(app.getDosen(userId).getKelas(kelasId).getTugas(0).getJudulTugas());
+                        pilihTugas.getTugas().setText(app.getDosen(userId).getKelas(kelasId).getTugas(0).getIsiTugas());
+                    }
+                    pilihTugas.getPilihTugas().setSelectedIndex(0);
+                    JOptionPane.showMessageDialog(pilihTugas, "Berhasil hapus tugas!");
+                }
+            }
         }
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
         Object x = e.getSource();
         if (x.equals(pilihTugas.getPilihTugas())){
-            if (app.getKelas(kelasId).getMateriList().size()>0){
+            if (app.getKelas(kelasId).getTugasList().size()>0){
                 pilihTugas.getJudul().setText(app.getDosen(userId).getKelas(kelasId).getTugas(pilihTugas.getPilihTugas().getSelectedIndex()).getJudulTugas());
                 pilihTugas.getTugas().setText(app.getDosen(userId).getKelas(kelasId).getTugas(pilihTugas.getPilihTugas().getSelectedIndex()).getIsiTugas());
             }

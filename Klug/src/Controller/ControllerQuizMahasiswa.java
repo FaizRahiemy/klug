@@ -45,6 +45,8 @@ public class ControllerQuizMahasiswa extends MouseAdapter implements ActionListe
             pilKel.getJaw(i+1).setVisible(false);
         }
         pilKel.getBtn_tambah().setVisible(false);
+        pilKel.getBtn_hapus().setVisible(false);
+        pilKel.getJudulQuiz().setVisible(false);
         pilKel.getPilihQuiz().addMouseListener(this);
         pilKel.getJudulHalaman().setText("Quiz " + app.getMahasiswa(userId).getKelas(kelasId).getQuiz(quizId).getJudulQuiz());
         pilKel.getJudul().setText("Soal 1");
@@ -132,7 +134,7 @@ public class ControllerQuizMahasiswa extends MouseAdapter implements ActionListe
     }
     
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
         Object x = e.getSource();
         if (x.equals(pilKel.getPilihQuiz())){
             if (app.getKelas(kelasId).getQuiz(quizId).getSoalList().size()>0){

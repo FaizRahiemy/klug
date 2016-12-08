@@ -28,7 +28,7 @@ public class ControllerKehadiranMahasiswa implements ActionListener{
         this.app = app;
         this.file = file;
         this.userId = userId;
-        System.out.println(userId);
+//        System.out.println(userId);
         kehadiran.setResizable(false);
         kehadiran.getBtn_back().addActionListener(this);
         DefaultTableModel tabel = (DefaultTableModel) kehadiran.getKehadiran().getModel();

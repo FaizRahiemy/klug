@@ -103,15 +103,15 @@ public class Mahasiswa extends Orang{
         this.jawaban.add(jawaban);
     }
     
-    public void createKehadiran(Kelas kelas,boolean hadir){
-        this.kehadiran.add(new Kehadiran(kelas,hadir));
+    public void createKehadiran(Kehadiran kehadiran){
+        this.kehadiran.add(kehadiran);
     }
     
     public int getTotalPertemuan(Kelas kelas){
         int total = 0;
         for (int i=0;i<kehadiran.size();i++){
-            if (kehadiran.get(i).getKelas() == kelas){
-                total++;
+            if (kehadiran.get(i).getKehadiran().getKelas() == kelas){
+                total = kehadiran.get(i).getKehadiran().getKelas().getKehadiran().size();
             }
         }
         return total;
@@ -120,7 +120,7 @@ public class Mahasiswa extends Orang{
     public int getTotalKehadiran(Kelas kelas){
         int total = 0;
         for (int i=0;i<kehadiran.size();i++){
-            if (kehadiran.get(i).getKelas() == kelas){
+            if (kehadiran.get(i).getKehadiran().getKelas() == kelas){
                 if (kehadiran.get(i).isHadir()){
                     total++;
                 }

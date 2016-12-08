@@ -53,7 +53,7 @@ public class ControllerLogin implements ActionListener, KeyListener{
                     if ((app.getOrangList().get(result) instanceof Mahasiswa) || (app.getOrangList().get(result) instanceof Dosen)) {
                         ControllerDashboardMahasiswaDosen dashMhs = new ControllerDashboardMahasiswaDosen(app,file,result);
                     }else{
-                        JOptionPane.showMessageDialog(login, "Halo "+app.getOrangList().get(result).getNama()+", Login Berhasil");
+                        ControllerDashboardAdmin dashMhs = new ControllerDashboardAdmin(app,file,result);
                     }
                     login.dispose();
                 }else{
@@ -86,7 +86,7 @@ public class ControllerLogin implements ActionListener, KeyListener{
                     if (app.getOrangList().get(result) instanceof Mahasiswa){
                         ControllerDashboardMahasiswaDosen dashMhs = new ControllerDashboardMahasiswaDosen(app,file,result);
                     }else{
-                        JOptionPane.showMessageDialog(login, "Halo "+app.getOrangList().get(result).getNama()+", Login Berhasil");
+                        ControllerDashboardAdmin dashMhs = new ControllerDashboardAdmin(app,file,result);
                     }
                     login.dispose();
                 }else{

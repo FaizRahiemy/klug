@@ -10,12 +10,10 @@ package Model;
  * @author faiz
  */
 public class Jawaban {
-    private int index;
     private String jawaban;
     private boolean benar;
 
-    public Jawaban(int index, String jawaban, boolean benar) {
-        this.index = index;
+    public Jawaban(String jawaban, boolean benar) {
         this.jawaban = jawaban;
         this.benar = benar;
     }

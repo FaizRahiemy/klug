@@ -16,7 +16,7 @@ public class Dosen extends Orang{
     private String kodeDosen;
     private ArrayList<Kelas> kelas;
 
-    public Dosen(String nip, String kodeDosen, String username, String password, String nama) {
+    public Dosen(String username, String password, String nama, String nip, String kodeDosen) {
         super(username, password, nama);
         this.nip = nip;
         this.kodeDosen = kodeDosen;

@@ -12,7 +12,7 @@ package Model;
 public class Admin extends Orang{
     private String nip;
 
-    public Admin(String nip, String username, String password, String nama) {
+    public Admin(String username, String password, String nama, String nip) {
         super(username, password, nama);
         this.nip = nip;
     }

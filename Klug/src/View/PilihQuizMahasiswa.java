@@ -46,6 +46,8 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
         jScrollPane2 = new javax.swing.JScrollPane();
         status = new javax.swing.JTextArea();
         btn_kerjakan = new javax.swing.JButton();
+        btn_tambah = new javax.swing.JButton();
+        btn_hapus = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -109,6 +111,18 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
         btn_kerjakan.setText("Kerjakan");
         btn_kerjakan.setBorderPainted(false);
 
+        btn_tambah.setBackground(new java.awt.Color(255, 255, 255));
+        btn_tambah.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
+        btn_tambah.setForeground(new java.awt.Color(238, 95, 1));
+        btn_tambah.setText("Tambah Quiz");
+        btn_tambah.setBorderPainted(false);
+
+        btn_hapus.setBackground(new java.awt.Color(255, 255, 255));
+        btn_hapus.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
+        btn_hapus.setForeground(new java.awt.Color(238, 95, 1));
+        btn_hapus.setText("Hapus Quiz");
+        btn_hapus.setBorderPainted(false);
+
         javax.swing.GroupLayout backgroundKlug1Layout = new javax.swing.GroupLayout(backgroundKlug1);
         backgroundKlug1.setLayout(backgroundKlug1Layout);
         backgroundKlug1Layout.setHorizontalGroup(
@@ -129,9 +143,14 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
                     .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_kerjakan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(judul)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btn_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(backgroundKlug1Layout.createSequentialGroup()
+                            .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btn_kerjakan, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         backgroundKlug1Layout.setVerticalGroup(
@@ -154,7 +173,11 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_kerjakan)
+                        .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_kerjakan)
+                            .addComponent(btn_tambah))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_hapus)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(btn_back)
@@ -214,37 +237,6 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
             java.util.logging.Logger.getLogger(PilihQuizMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -257,7 +249,9 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private img.BackgroundKlug backgroundKlug1;
     private javax.swing.JButton btn_back;
+    private javax.swing.JButton btn_hapus;
     private javax.swing.JButton btn_kerjakan;
+    private javax.swing.JButton btn_tambah;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
     private javax.swing.JLabel jLabel1;
@@ -291,6 +285,18 @@ public class PilihQuizMahasiswa extends javax.swing.JFrame implements View{
     
     public JLabel getJudulHalaman(){
         return judulHalaman;
+    }
+
+    public JButton getBtn_tambah() {
+        return btn_tambah;
+    }
+
+    public JButton getBtn_hapus() {
+        return btn_hapus;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
     }
     
     @Override

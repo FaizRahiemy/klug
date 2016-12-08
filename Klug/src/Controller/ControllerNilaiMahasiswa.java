@@ -34,8 +34,8 @@ public class ControllerNilaiMahasiswa implements ActionListener{
         nilai.getBtn_back().addActionListener(this);
         DefaultTableModel tabel = (DefaultTableModel) nilai.getNilai().getModel();
         for (int i=0;i<app.getMahasiswa(userId).getNilaiList().size();i++){
-            if (app.getMahasiswa(userId).getNilai(i).getKelas() == app.getMahasiswa(userId).getKelas(kelasId)){
-                tabel.addRow(new Object[]{app.getMahasiswa(userId).getNilai(i).getJudulNilai(),app.getMahasiswa(userId).getNilai(i).getNilai()});
+            if (app.getMahasiswa(userId).getNilai(i).getNil().getKelas() == app.getMahasiswa(userId).getKelas(kelasId)){
+                tabel.addRow(new Object[]{app.getMahasiswa(userId).getNilai(i).getNil().getJudulNilai(),app.getMahasiswa(userId).getNilai(i).getNilai()});
             }
         }
         nilai.setVisible(true);

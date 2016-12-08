@@ -10,18 +10,20 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
  * @author faiz
  */
-public class PilihTugasDosen extends javax.swing.JFrame implements View{
+public class NilaiDosen extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form Login
      */
-    public PilihTugasDosen() {
+    public NilaiDosen() {
         initComponents();
     }
 
@@ -38,16 +40,12 @@ public class PilihTugasDosen extends javax.swing.JFrame implements View{
         judulHalaman = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         close1 = new javax.swing.JLabel();
-        btn_back = new javax.swing.JButton();
+        btn_simpan = new javax.swing.JButton();
+        judul = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        pilihTugas = new javax.swing.JList<>();
-        judul = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        isiTugas = new javax.swing.JTextArea();
-        btn_lihat = new javax.swing.JButton();
-        btn_tambah = new javax.swing.JButton();
-        btn_hapus = new javax.swing.JButton();
+        mahasiswa = new javax.swing.JTable();
+        btn_back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -59,7 +57,7 @@ public class PilihTugasDosen extends javax.swing.JFrame implements View{
 
         judulHalaman.setFont(new java.awt.Font("Aller", 0, 36)); // NOI18N
         judulHalaman.setForeground(new java.awt.Color(255, 255, 255));
-        judulHalaman.setText("Tugas");
+        judulHalaman.setText("Nilai");
 
         close.setBackground(new java.awt.Color(255, 255, 255));
         close.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
@@ -79,48 +77,44 @@ public class PilihTugasDosen extends javax.swing.JFrame implements View{
             }
         });
 
+        btn_simpan.setBackground(new java.awt.Color(255, 255, 255));
+        btn_simpan.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        btn_simpan.setForeground(new java.awt.Color(238, 95, 1));
+        btn_simpan.setText("Simpan");
+        btn_simpan.setBorderPainted(false);
+
+        judul.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(238, 95, 1));
+        jLabel1.setText("Judul");
+
+        mahasiswa.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "NIM", "Nama", "Nilai"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        mahasiswa.setMaximumSize(new java.awt.Dimension(2147483647, 30));
+        mahasiswa.setPreferredSize(new java.awt.Dimension(300, 30));
+        mahasiswa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(mahasiswa);
+
         btn_back.setBackground(new java.awt.Color(255, 255, 255));
         btn_back.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
         btn_back.setForeground(new java.awt.Color(238, 95, 1));
         btn_back.setText("Kembali");
         btn_back.setBorderPainted(false);
-
-        jLabel1.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(238, 95, 1));
-        jLabel1.setText("Daftar Tugas");
-
-        pilihTugas.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
-        pilihTugas.setForeground(new java.awt.Color(238, 95, 1));
-        pilihTugas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        pilihTugas.setSelectionBackground(new java.awt.Color(238, 95, 1));
-        jScrollPane1.setViewportView(pilihTugas);
-
-        judul.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
-        judul.setForeground(new java.awt.Color(238, 95, 1));
-        judul.setText("Tugas");
-
-        isiTugas.setEditable(false);
-        isiTugas.setColumns(20);
-        isiTugas.setRows(5);
-        jScrollPane2.setViewportView(isiTugas);
-
-        btn_lihat.setBackground(new java.awt.Color(255, 255, 255));
-        btn_lihat.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
-        btn_lihat.setForeground(new java.awt.Color(238, 95, 1));
-        btn_lihat.setText("Lihat");
-        btn_lihat.setBorderPainted(false);
-
-        btn_tambah.setBackground(new java.awt.Color(255, 255, 255));
-        btn_tambah.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
-        btn_tambah.setForeground(new java.awt.Color(238, 95, 1));
-        btn_tambah.setText("Tambah Tugas");
-        btn_tambah.setBorderPainted(false);
-
-        btn_hapus.setBackground(new java.awt.Color(255, 255, 255));
-        btn_hapus.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
-        btn_hapus.setForeground(new java.awt.Color(238, 95, 1));
-        btn_hapus.setText("Hapus Tugas");
-        btn_hapus.setBorderPainted(false);
 
         javax.swing.GroupLayout backgroundKlug1Layout = new javax.swing.GroupLayout(backgroundKlug1);
         backgroundKlug1.setLayout(backgroundKlug1Layout);
@@ -129,7 +123,7 @@ public class PilihTugasDosen extends javax.swing.JFrame implements View{
             .addGroup(backgroundKlug1Layout.createSequentialGroup()
                 .addGap(259, 259, 259)
                 .addComponent(judulHalaman)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 380, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 401, Short.MAX_VALUE)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,20 +131,17 @@ public class PilihTugasDosen extends javax.swing.JFrame implements View{
             .addGroup(backgroundKlug1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
-                        .addComponent(btn_tambah)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_hapus)
+                        .addComponent(jLabel1)
+                        .addGap(58, 58, 58)
+                        .addComponent(judul, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundKlug1Layout.createSequentialGroup()
+                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_lihat, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(judul)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29))
         );
         backgroundKlug1Layout.setVerticalGroup(
             backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,21 +153,17 @@ public class PilihTugasDosen extends javax.swing.JFrame implements View{
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(judulHalaman)))
-                .addGap(55, 55, 55)
+                .addGap(60, 60, 60)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(judul))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
-                .addGap(18, 18, 18)
+                    .addComponent(judul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_back)
-                    .addComponent(btn_lihat)
-                    .addComponent(btn_tambah)
-                    .addComponent(btn_hapus))
-                .addGap(37, 37, 37))
+                    .addComponent(btn_simpan)
+                    .addComponent(btn_back))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,7 +186,7 @@ public class PilihTugasDosen extends javax.swing.JFrame implements View{
     }// </editor-fold>//GEN-END:initComponents
 
     private void close1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close1MouseReleased
-        this.setState(PilihTugasDosen.ICONIFIED);
+        this.setState(NilaiDosen.ICONIFIED);
     }//GEN-LAST:event_close1MouseReleased
 
     private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
@@ -223,87 +210,69 @@ public class PilihTugasDosen extends javax.swing.JFrame implements View{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PilihTugasDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NilaiDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PilihTugasDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NilaiDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PilihTugasDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NilaiDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PilihTugasDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NilaiDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PilihTugasDosen().setVisible(true);
+                new NilaiDosen().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private img.BackgroundKlug backgroundKlug1;
     private javax.swing.JButton btn_back;
-    private javax.swing.JButton btn_hapus;
-    private javax.swing.JButton btn_lihat;
-    private javax.swing.JButton btn_tambah;
+    private javax.swing.JButton btn_simpan;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
-    private javax.swing.JTextArea isiTugas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel judul;
+    private javax.swing.JTextField judul;
     private javax.swing.JLabel judulHalaman;
-    private javax.swing.JList<String> pilihTugas;
+    private javax.swing.JTable mahasiswa;
     // End of variables declaration//GEN-END:variables
+    
+    public JButton getBtnSimpan() {
+        return btn_simpan;
+    }
 
     public JButton getBtn_back() {
         return btn_back;
     }
-    
-    public JList getPilihTugas(){
-        return pilihTugas;
-    }
 
-    public JButton getBtn_tambah() {
-        return btn_tambah;
-    }
-
-    public JButton getBtn_hapus() {
-        return btn_hapus;
-    }
-
-    public JButton getBtn_lihat() {
-        return btn_lihat;
-    }
-    
-    public JLabel getJudul(){
+    public JTextField getJudul() {
         return judul;
-    }
-    
-    public JTextArea getTugas(){
-        return isiTugas;
     }
     
     public JLabel getJudulHalaman(){
         return judulHalaman;
     }
 
-    public JLabel getjLabel1() {
-        return jLabel1;
+    public JTable getMahasiswa() {
+        return mahasiswa;
     }
     
     @Override
     public void addActionListener(ActionListener e) {
-        btn_back.addActionListener(e);
-        //pilihMateri.addActionListener(e);
-    }
-
-    @Override
-    public synchronized void addMouseListener(MouseListener l) {
-        pilihTugas.addMouseListener(l);
+        btn_simpan.addActionListener(e);
     }
 
 }
