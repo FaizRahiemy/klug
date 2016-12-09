@@ -5,11 +5,13 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author faiz
  */
-public class TugasMhs {
+public class TugasMhs implements Serializable {
     private Tugas tugas;
     private String lokasi;
     private boolean status;

@@ -19,10 +19,10 @@ import javax.swing.JOptionPane;
 public class ControllerDashboardMahasiswaDosen implements ActionListener{
     private DashboardMahasiswaDosen dashMhs = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     
-    public ControllerDashboardMahasiswaDosen(Application app, FileIO file, int userId){
+    public ControllerDashboardMahasiswaDosen(Application app, IOFile file, int userId){
         dashMhs = new DashboardMahasiswaDosen();
         this.app = app;
         this.file = file;

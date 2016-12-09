@@ -5,13 +5,14 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author faiz
  */
-public class Mahasiswa extends Orang{
+public class Mahasiswa extends Orang implements Serializable {
     private String nim;
     private String prodi;
     private ArrayList<Kelas> kelas;

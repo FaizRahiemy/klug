@@ -20,10 +20,10 @@ import javax.swing.JOptionPane;
 public class ControllerPilihKelasKehadiranDosen implements ActionListener{
     private PilihKelas pilKel = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     
-    public ControllerPilihKelasKehadiranDosen(Application app, FileIO file, int userId){
+    public ControllerPilihKelasKehadiranDosen(Application app, IOFile file, int userId){
         pilKel = new PilihKelas();
         this.app = app;
         this.file = file;

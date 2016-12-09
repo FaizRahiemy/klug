@@ -20,10 +20,10 @@ import javax.swing.table.DefaultTableModel;
 public class ControllerKehadiranMahasiswa implements ActionListener{
     private KehadiranMahasiswa kehadiran = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     
-    public ControllerKehadiranMahasiswa(Application app, FileIO file, int userId){
+    public ControllerKehadiranMahasiswa(Application app, IOFile file, int userId){
         kehadiran = new KehadiranMahasiswa();
         this.app = app;
         this.file = file;

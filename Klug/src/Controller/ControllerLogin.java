@@ -21,9 +21,9 @@ import javax.swing.JOptionPane;
 public class ControllerLogin implements ActionListener, KeyListener{
     private Login login = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     
-    public ControllerLogin(Application app, FileIO file){
+    public ControllerLogin(Application app, IOFile file){
         login = new Login();
         this.app = app;
         this.file = file;

@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 /**
@@ -23,14 +24,14 @@ import javax.swing.JOptionPane;
 public class ControllerQuizMahasiswa extends MouseAdapter implements ActionListener{
     private QuizMahasiswa pilKel = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     private int quizId;
     
     private JawabanMahasiswa jawaban;
     
-    public ControllerQuizMahasiswa(Application app, FileIO file, int userId, int kelasId, int quizId){
+    public ControllerQuizMahasiswa(Application app, IOFile file, int userId, int kelasId, int quizId){
         pilKel = new QuizMahasiswa();
         this.app = app;
         this.file = file;
@@ -64,6 +65,11 @@ public class ControllerQuizMahasiswa extends MouseAdapter implements ActionListe
         if (result == -1){
             jawaban = new JawabanMahasiswa(app.getMahasiswa(userId),app.getMahasiswa(userId).getKelas(kelasId).getQuiz(quizId));
             app.getMahasiswa(userId).createJawaban(jawaban);
+            try {
+                app.saveFile(app.getOrangList());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             for (int j=0;j<app.getMahasiswa(userId).getKelas(kelasId).getQuiz(quizId).getSoalList().size();j++){
                 jawaban.getJawabanList().add(app.getMahasiswa(userId).getKelas(kelasId).getQuiz(quizId).getSoal(j).getJawaban(0));
             }
@@ -122,6 +128,11 @@ public class ControllerQuizMahasiswa extends MouseAdapter implements ActionListe
             pilKel.dispose();
         }else if(x.equals(pilKel.getBtn_finish())){
             jawaban.hitungNilai();
+            try {
+                app.saveFile(app.getOrangList());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             JOptionPane.showMessageDialog(pilKel, "Pengerjaan Quiz selesai!");
             ControllerPilihQuizMahasiswa quizMhs = new ControllerPilihQuizMahasiswa(app,file,userId,kelasId);
             pilKel.dispose();
@@ -129,6 +140,11 @@ public class ControllerQuizMahasiswa extends MouseAdapter implements ActionListe
         for (int i=0;i<5;i++){
             if(x.equals(pilKel.getJawaban(i+1))){
                 jawaban.setJawaban(pilKel.getPilihQuiz().getSelectedIndex(),app.getMahasiswa(userId).getKelas(kelasId).getQuiz(quizId).getSoal(pilKel.getPilihQuiz().getSelectedIndex()).getJawaban(i));
+                try {
+                    app.saveFile(app.getOrangList());
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         }
     }
@@ -137,7 +153,7 @@ public class ControllerQuizMahasiswa extends MouseAdapter implements ActionListe
     public void mousePressed(MouseEvent e) {
         Object x = e.getSource();
         if (x.equals(pilKel.getPilihQuiz())){
-            if (app.getKelas(kelasId).getQuiz(quizId).getSoalList().size()>0){
+            if (app.getMahasiswa(userId).getKelas(kelasId).getQuiz(quizId).getSoalList().size()>0){
                 pilKel.getJudul().setText("Soal "+(pilKel.getPilihQuiz().getSelectedIndex()+1));
                 pilKel.getSoal().setText(app.getKelas(kelasId).getQuiz(quizId).getSoal(pilKel.getPilihQuiz().getSelectedIndex()).getSoal());
                 for(int i=0;i<5;i++){

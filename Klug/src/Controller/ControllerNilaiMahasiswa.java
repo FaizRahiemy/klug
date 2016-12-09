@@ -20,11 +20,11 @@ import javax.swing.table.DefaultTableModel;
 public class ControllerNilaiMahasiswa implements ActionListener{
     private NilaiMahasiswa nilai = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     
-    public ControllerNilaiMahasiswa(Application app, FileIO file, int userId, int kelasId){
+    public ControllerNilaiMahasiswa(Application app, IOFile file, int userId, int kelasId){
         nilai = new NilaiMahasiswa();
         this.app = app;
         this.file = file;

@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 /**
@@ -22,11 +23,11 @@ import javax.swing.JOptionPane;
 public class ControllerPilihQuizDosen extends MouseAdapter implements ActionListener{
     private PilihQuizMahasiswa pilKel = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     
-    public ControllerPilihQuizDosen(Application app, FileIO file, int userId, int kelasId){
+    public ControllerPilihQuizDosen(Application app, IOFile file, int userId, int kelasId){
         pilKel = new PilihQuizMahasiswa();
         this.app = app;
         this.file = file;
@@ -78,6 +79,11 @@ public class ControllerPilihQuizDosen extends MouseAdapter implements ActionList
             quiz.getSoal(0).createJawaban("jawaban baru", false);
             quiz.getSoal(0).createJawaban("jawaban baru", false);
             app.getDosen(userId).getKelas(kelasId).createQuiz(quiz);
+            try {
+                app.saveFile(app.getKelasList());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             ControllerQuizDosen quizsMhs = new ControllerQuizDosen(app,file,userId,kelasId,app.getDosen(userId).getKelas(kelasId).getQuizList().size()-1);
             pilKel.dispose();
         }else if(x.equals(pilKel.getBtn_hapus())){
@@ -85,6 +91,11 @@ public class ControllerPilihQuizDosen extends MouseAdapter implements ActionList
                 int reply = JOptionPane.showConfirmDialog(pilKel, "Yakin akan hapus quiz "+(app.getDosen(userId).getKelas(kelasId).getQuiz(pilKel.getPilihQuiz().getSelectedIndex()).getJudulQuiz())+"?", "Yakin?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     app.getDosen(userId).getKelas(kelasId).getQuizList().remove(pilKel.getPilihQuiz().getSelectedIndex());
+                    try {
+                        app.saveFile(app.getKelasList());
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     DefaultListModel modelList = new DefaultListModel();
                     pilKel.getPilihQuiz().setModel(modelList);
                     for(int i=0;i<app.getDosen(userId).getKelas(kelasId).getQuizList().size();i++){
@@ -104,7 +115,7 @@ public class ControllerPilihQuizDosen extends MouseAdapter implements ActionList
     public void mousePressed(MouseEvent e) {
         Object x = e.getSource();
         if (x.equals(pilKel.getPilihQuiz())){
-            if (app.getKelas(kelasId).getQuizList().size()>0){
+            if (app.getDosen(userId).getKelas(kelasId).getQuizList().size()>0){
                 pilKel.getJudul().setText(app.getDosen(userId).getKelas(kelasId).getQuiz(pilKel.getPilihQuiz().getSelectedIndex()).getJudulQuiz());
                 pilKel.getStatus().setText("Jumlah Soal : "+app.getDosen(userId).getKelas(kelasId).getQuiz(pilKel.getPilihQuiz().getSelectedIndex()).getSoalList().size());
             }

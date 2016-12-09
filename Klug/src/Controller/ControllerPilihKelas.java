@@ -14,8 +14,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -26,10 +29,10 @@ import javax.swing.JOptionPane;
 public class ControllerPilihKelas extends MouseAdapter implements ActionListener{
     private PilihTugasDosen pilihTugas = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     
-    public ControllerPilihKelas(Application app, FileIO file, int userId){
+    public ControllerPilihKelas(Application app, IOFile file, int userId){
         pilihTugas = new PilihTugasDosen();
         this.app = app;
         this.file = file;
@@ -76,13 +79,23 @@ public class ControllerPilihKelas extends MouseAdapter implements ActionListener
             ControllerKelas materidetail = new ControllerKelas(app, file, userId, pilihTugas.getPilihTugas().getSelectedIndex());
             pilihTugas.dispose();
         }else if(x.equals(pilihTugas.getBtn_tambah())){
-            ControllerKelas materidetail = new ControllerKelas(app, file, userId, -1);
+            try {
+                app.createKelas("Baru", "Baru", "Baru", null);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            ControllerKelas materidetail = new ControllerKelas(app, file, userId, app.getKelasList().size()-1);
             pilihTugas.dispose();
         }else if(x.equals(pilihTugas.getBtn_hapus())){
             if (app.getKelasList().size() > 0){
                 int reply = JOptionPane.showConfirmDialog(pilihTugas, "Yakin akan hapus pengguna "+(app.getKelas(pilihTugas.getPilihTugas().getSelectedIndex()).getNamaMataKuliah())+"?", "Yakin?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     app.getKelasList().remove(pilihTugas.getPilihTugas().getSelectedIndex());
+                    try {
+                        app.saveFile(app.getKelasList());
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     DefaultListModel modelList = new DefaultListModel();
                     pilihTugas.getPilihTugas().setModel(modelList);
                     for(int i=0;i<app.getKelasList().size();i++){

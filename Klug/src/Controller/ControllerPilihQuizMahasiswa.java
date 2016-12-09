@@ -22,11 +22,11 @@ import javax.swing.JOptionPane;
 public class ControllerPilihQuizMahasiswa extends MouseAdapter implements ActionListener{
     private PilihQuizMahasiswa pilKel = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     
-    public ControllerPilihQuizMahasiswa(Application app, FileIO file, int userId, int kelasId){
+    public ControllerPilihQuizMahasiswa(Application app, IOFile file, int userId, int kelasId){
         pilKel = new PilihQuizMahasiswa();
         this.app = app;
         this.file = file;
@@ -43,7 +43,7 @@ public class ControllerPilihQuizMahasiswa extends MouseAdapter implements Action
         pilKel.getPilihQuiz().setModel(modelList);
         if (app.getMahasiswa(userId).getKelas(kelasId).getQuizList().size()>0){
             for(int i=0;i<app.getMahasiswa(userId).getKelas(kelasId).getQuizList().size();i++){
-                modelList.addElement(app.getKelas(kelasId).getQuiz(i).getJudulQuiz());
+                modelList.addElement(app.getMahasiswa(userId).getKelas(kelasId).getQuiz(i).getJudulQuiz());
                 if (i==0){
                     pilKel.getJudul().setText(app.getMahasiswa(userId).getKelas(kelasId).getQuiz(0).getJudulQuiz());
                     boolean udah=false;
@@ -95,7 +95,7 @@ public class ControllerPilihQuizMahasiswa extends MouseAdapter implements Action
     public void mousePressed(MouseEvent e) {
         Object x = e.getSource();
         if (x.equals(pilKel.getPilihQuiz())){
-            if (app.getKelas(kelasId).getQuizList().size()>0){
+            if (app.getMahasiswa(userId).getKelas(kelasId).getQuizList().size()>0){
                 pilKel.getJudul().setText(app.getMahasiswa(userId).getKelas(kelasId).getQuiz(pilKel.getPilihQuiz().getSelectedIndex()).getJudulQuiz());
                 boolean udah=false;
                 int result = -1;

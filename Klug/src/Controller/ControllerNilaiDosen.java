@@ -28,13 +28,13 @@ import javax.swing.table.DefaultTableModel;
 public class ControllerNilaiDosen extends MouseAdapter implements ActionListener{
     private NilaiDosen nilDos = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     private int nilaiId;
     private String dirup;
     
-    public ControllerNilaiDosen(Application app, FileIO file, int userId, int kelasId, int nilaiId){
+    public ControllerNilaiDosen(Application app, IOFile file, int userId, int kelasId, int nilaiId){
         nilDos = new NilaiDosen();
         this.app = app;
         this.file = file;
@@ -93,6 +93,16 @@ public class ControllerNilaiDosen extends MouseAdapter implements ActionListener
                     }
                     app.getDosen(userId).getKelas(kelasId).getMahasiswa(i).createNilai(new Nilai(app.getDosen(userId).getKelas(kelasId).getNilai(nilaiId),nilbaru));
                 }
+            }
+            try {
+                app.saveFile(app.getKelasList());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            try {
+                app.saveFile(app.getOrangList());
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
             ControllerPilihNilaiDosen pilKelMateri = new ControllerPilihNilaiDosen(app,file,userId,kelasId);
             nilDos.dispose();

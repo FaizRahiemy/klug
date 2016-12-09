@@ -5,13 +5,14 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author faiz
  */
-public class Soal {
+public class Soal implements Serializable {
     private String soal;
     private ArrayList<Jawaban> jawaban;
 

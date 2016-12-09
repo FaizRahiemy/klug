@@ -5,13 +5,14 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author faiz
  */
-public class Tugas {
+public class Tugas implements Serializable {
     private String judulTugas;
     private String isiTugas;
 

@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import javax.swing.DefaultListModel;
@@ -26,11 +27,11 @@ import javax.swing.JOptionPane;
 public class ControllerPilihTugasDosen extends MouseAdapter implements ActionListener{
     private PilihTugasDosen pilihTugas = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     
-    public ControllerPilihTugasDosen(Application app, FileIO file, int userId, int kelasId){
+    public ControllerPilihTugasDosen(Application app, IOFile file, int userId, int kelasId){
         pilihTugas = new PilihTugasDosen();
         this.app = app;
         this.file = file;
@@ -80,6 +81,11 @@ public class ControllerPilihTugasDosen extends MouseAdapter implements ActionLis
                 int reply = JOptionPane.showConfirmDialog(pilihTugas, "Yakin akan hapus tugas "+(app.getDosen(userId).getKelas(kelasId).getTugas(pilihTugas.getPilihTugas().getSelectedIndex()).getJudulTugas())+"?", "Yakin?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     app.getDosen(userId).getKelas(kelasId).getTugasList().remove(pilihTugas.getPilihTugas().getSelectedIndex());
+                    try {
+                        app.saveFile(app.getKelasList());
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     DefaultListModel modelList = new DefaultListModel();
                     pilihTugas.getPilihTugas().setModel(modelList);
                     for(int i=0;i<app.getDosen(userId).getKelas(kelasId).getTugasList().size();i++){
@@ -100,7 +106,7 @@ public class ControllerPilihTugasDosen extends MouseAdapter implements ActionLis
     public void mousePressed(MouseEvent e) {
         Object x = e.getSource();
         if (x.equals(pilihTugas.getPilihTugas())){
-            if (app.getKelas(kelasId).getTugasList().size()>0){
+            if (app.getDosen(userId).getKelas(kelasId).getTugasList().size()>0){
                 pilihTugas.getJudul().setText(app.getDosen(userId).getKelas(kelasId).getTugas(pilihTugas.getPilihTugas().getSelectedIndex()).getJudulTugas());
                 pilihTugas.getTugas().setText(app.getDosen(userId).getKelas(kelasId).getTugas(pilihTugas.getPilihTugas().getSelectedIndex()).getIsiTugas());
             }

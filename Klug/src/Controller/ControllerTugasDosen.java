@@ -28,13 +28,13 @@ import javax.swing.table.DefaultTableModel;
 public class ControllerTugasDosen extends MouseAdapter implements ActionListener{
     private TugasDosen tugasDos = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     private int tugasId;
     private String dirup;
     
-    public ControllerTugasDosen(Application app, FileIO file, int userId, int kelasId, int tugasId){
+    public ControllerTugasDosen(Application app, IOFile file, int userId, int kelasId, int tugasId){
         tugasDos = new TugasDosen();
         this.app = app;
         this.file = file;
@@ -70,6 +70,13 @@ public class ControllerTugasDosen extends MouseAdapter implements ActionListener
     public void actionPerformed(ActionEvent e) {
         Object x = e.getSource();
         if(x.equals(tugasDos.getBtnSimpan())){
+            app.getDosen(userId).getKelas(kelasId).getTugas(tugasId).setJudulTugas(tugasDos.getJudul().getText());
+            app.getDosen(userId).getKelas(kelasId).getTugas(tugasId).setIsiTugas(tugasDos.getTugas().getText());
+            try {
+                app.saveFile(app.getKelasList());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             ControllerPilihTugasDosen pilKelMateri = new ControllerPilihTugasDosen(app,file,userId,kelasId);
             tugasDos.dispose();
         }else if(x.equals(tugasDos.getBtn_back())){

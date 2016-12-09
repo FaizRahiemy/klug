@@ -5,11 +5,13 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author faiz
  */
-public class Nilai {
+public class Nilai implements Serializable {
     private String judulNilai;
     private Nilai nil;
     private Kelas kelas;

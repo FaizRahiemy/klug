@@ -154,7 +154,7 @@ public class MenuKelas extends javax.swing.JFrame implements View{
         btnDosen.setBackground(new java.awt.Color(255, 255, 255));
         btnDosen.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
         btnDosen.setForeground(new java.awt.Color(238, 95, 1));
-        btnDosen.setText("Tambah");
+        btnDosen.setText("Ganti");
         btnDosen.setBorderPainted(false);
 
         close2.setBackground(new java.awt.Color(255, 255, 255));
@@ -239,9 +239,9 @@ public class MenuKelas extends javax.swing.JFrame implements View{
                         .addComponent(close2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(close3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40)
-                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(nama))
+                .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)

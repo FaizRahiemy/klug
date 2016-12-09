@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -27,13 +29,13 @@ import javax.swing.JOptionPane;
 public class ControllerMateriDetailDosen extends MouseAdapter implements ActionListener{
     private MateriDetailDosen materi = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     private int materiId;
     private String dirup;
     
-    public ControllerMateriDetailDosen(Application app, FileIO file, int userId, int kelasId, int materiId){
+    public ControllerMateriDetailDosen(Application app, IOFile file, int userId, int kelasId, int materiId){
         materi = new MateriDetailDosen();
         this.app = app;
         this.file = file;
@@ -99,6 +101,11 @@ public class ControllerMateriDetailDosen extends MouseAdapter implements ActionL
                     JOptionPane.showMessageDialog(materi,"Semua data harus diisi!");
                 }else{
                     app.getDosen(userId).getKelas(kelasId).createMateri(materi.getJudul().getText(), materi.getMateri().getText(), dirup);
+                    try {
+                        app.saveFile(app.getKelasList());
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     ControllerMateriDosen pilKelMateri = new ControllerMateriDosen(app,file,userId,kelasId);
                     materi.dispose();
                 }
@@ -109,6 +116,11 @@ public class ControllerMateriDetailDosen extends MouseAdapter implements ActionL
                     app.getDosen(userId).getKelas(kelasId).getMateri(materiId).setJudulMateri(materi.getJudul().getText());
                     app.getDosen(userId).getKelas(kelasId).getMateri(materiId).setIsiMateri(materi.getMateri().getText());
                     app.getDosen(userId).getKelas(kelasId).getMateri(materiId).setDir(dirup);
+                    try {
+                        app.saveFile(app.getKelasList());
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     ControllerMateriDosen pilKelMateri = new ControllerMateriDosen(app,file,userId,kelasId);
                     materi.dispose();
                 }

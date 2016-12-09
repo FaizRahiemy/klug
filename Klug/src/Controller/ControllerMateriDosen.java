@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import javax.swing.DefaultListModel;
@@ -26,11 +27,11 @@ import javax.swing.JOptionPane;
 public class ControllerMateriDosen extends MouseAdapter implements ActionListener{
     private MateriDosen materi = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     
-    public ControllerMateriDosen(Application app, FileIO file, int userId, int kelasId){
+    public ControllerMateriDosen(Application app, IOFile file, int userId, int kelasId){
         materi = new MateriDosen();
         this.app = app;
         this.file = file;
@@ -80,6 +81,11 @@ public class ControllerMateriDosen extends MouseAdapter implements ActionListene
                 int reply = JOptionPane.showConfirmDialog(materi, "Yakin akan hapus materi "+(app.getDosen(userId).getKelas(kelasId).getMateri(materi.getPilihMateri().getSelectedIndex()).getJudulMateri())+"?", "Yakin?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     app.getDosen(userId).getKelas(kelasId).getMateriList().remove(materi.getPilihMateri().getSelectedIndex());
+                    try {
+                        app.saveFile(app.getKelasList());
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     DefaultListModel modelList = new DefaultListModel();
                     materi.getPilihMateri().setModel(modelList);
                     for(int i=0;i<app.getDosen(userId).getKelas(kelasId).getMateriList().size();i++){
@@ -100,7 +106,7 @@ public class ControllerMateriDosen extends MouseAdapter implements ActionListene
     public void mousePressed(MouseEvent e) {
         Object x = e.getSource();
         if (x.equals(materi.getPilihMateri())){
-            if (app.getKelas(kelasId).getMateriList().size()>0){
+            if (app.getDosen(userId).getKelas(kelasId).getMateriList().size()>0){
                 materi.getJudul().setText(app.getDosen(userId).getKelas(kelasId).getMateri(materi.getPilihMateri().getSelectedIndex()).getJudulMateri());
                 materi.getMateri().setText(app.getDosen(userId).getKelas(kelasId).getMateri(materi.getPilihMateri().getSelectedIndex()).getIsiMateri());
             }

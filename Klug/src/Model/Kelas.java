@@ -5,13 +5,14 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author faiz
  */
-public class Kelas {
+public class Kelas implements Serializable {
     private String namaMataKuliah;
     private String ruang;
     private String jadwal;

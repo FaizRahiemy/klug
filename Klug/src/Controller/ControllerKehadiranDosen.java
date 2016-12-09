@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -28,13 +30,13 @@ import javax.swing.table.DefaultTableModel;
 public class ControllerKehadiranDosen extends MouseAdapter implements ActionListener{
     private KehadiranDosen hadir = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     private int hadirId;
     private String dirup;
     
-    public ControllerKehadiranDosen(Application app, FileIO file, int userId, int kelasId, int hadirId){
+    public ControllerKehadiranDosen(Application app, IOFile file, int userId, int kelasId, int hadirId){
         hadir = new KehadiranDosen();
         this.app = app;
         this.file = file;
@@ -78,6 +80,11 @@ public class ControllerKehadiranDosen extends MouseAdapter implements ActionList
         if(x.equals(hadir.getBtnSimpan())){
             app.getDosen(userId).getKelas(kelasId).getKehadiran(hadirId).setNama(hadir.getJudul().getText());
             app.getDosen(userId).getKelas(kelasId).getKehadiran(hadirId).setTanggal(hadir.getTanggal().getText());
+            try {
+                app.saveFile(app.getKelasList());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             ControllerPilihKehadiranDosen pilKelMateri = new ControllerPilihKehadiranDosen(app,file,userId,kelasId);
             hadir.dispose();
         }else if(x.equals(hadir.getBtn_back())){
@@ -108,6 +115,11 @@ public class ControllerKehadiranDosen extends MouseAdapter implements ActionList
                     app.getDosen(userId).getKelas(kelasId).getMahasiswa(hadir.getMahasiswa().getSelectedRow()).createKehadiran(new Kehadiran(app.getDosen(userId).getKelas(kelasId).getKehadiran(hadirId),true));
                     hadir.getMahasiswa().setValueAt("Hadir", hadir.getMahasiswa().getSelectedRow(), 2);
 //                    JOptionPane.showMessageDialog(hadir,app.getDosen(userId).getKelas(kelasId).getMahasiswa(hadir.getMahasiswa().getSelectedRow()).getNama() +" berubah jadi "+app.getDosen(userId).getKelas(kelasId).getMahasiswa(hadir.getMahasiswa().getSelectedRow()).getKehadiran(app.getDosen(userId).getKelas(kelasId).getMahasiswa(hadir.getMahasiswa().getSelectedRow()).getKehadiranList().size()-1).isHadir());
+                }
+                try {
+                    app.saveFile(app.getOrangList());
+                } catch (IOException ex) {
+                    ex.printStackTrace();
                 }
             }
         }

@@ -27,11 +27,11 @@ import javax.swing.JOptionPane;
 public class ControllerTugasMahasiswa extends MouseAdapter implements ActionListener{
     private TugasMahasiswa tugas = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     
-    public ControllerTugasMahasiswa(Application app, FileIO file, int userId, int kelasId){
+    public ControllerTugasMahasiswa(Application app, IOFile file, int userId, int kelasId){
         tugas = new TugasMahasiswa();
         this.app = app;
         this.file = file;
@@ -96,6 +96,11 @@ public class ControllerTugasMahasiswa extends MouseAdapter implements ActionList
                     if (app.getMahasiswa(userId).getTugas(i).getTugas() == app.getMahasiswa(userId).getKelas(kelasId).getTugas(tugas.getPilihTugas().getSelectedIndex())){
                         app.getMahasiswa(userId).getTugas(i).setStatus(true);
                         app.getMahasiswa(userId).getTugas(userId).setLokasi(app.getMahasiswa(userId).getNim()+"_"+app.getMahasiswa(userId).getKelas(kelasId).getNamaMataKuliah()+"_"+app.getMahasiswa(userId).getKelas(kelasId).getTugas(tugas.getPilihTugas().getSelectedIndex()).getJudulTugas()+"_"+file1.getName());
+                        try {
+                            app.saveFile(app.getOrangList());
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
                         tugas.getTugas().setText("Status : Sudah upload"+"\n"+app.getMahasiswa(userId).getKelas(kelasId).getTugas(tugas.getPilihTugas().getSelectedIndex()).getIsiTugas());
                         tugas.getBtn_download().setVisible(true);
                         result = i;
@@ -103,6 +108,11 @@ public class ControllerTugasMahasiswa extends MouseAdapter implements ActionList
                 }
                 if (result == -1){
                     app.getMahasiswa(userId).createTugas(new TugasMhs(app.getMahasiswa(userId).getKelas(kelasId).getTugas(tugas.getPilihTugas().getSelectedIndex()), app.getMahasiswa(userId).getNim()+"_"+app.getMahasiswa(userId).getKelas(kelasId).getNamaMataKuliah()+"_"+app.getMahasiswa(userId).getKelas(kelasId).getTugas(tugas.getPilihTugas().getSelectedIndex()).getJudulTugas()+"_"+file1.getName()));
+                    try {
+                        app.saveFile(app.getOrangList());
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     tugas.getTugas().setText("Status : Sudah upload"+"\n"+app.getMahasiswa(userId).getKelas(kelasId).getTugas(tugas.getPilihTugas().getSelectedIndex()).getIsiTugas());
                         tugas.getBtn_download().setVisible(true);
                 }
@@ -138,7 +148,7 @@ public class ControllerTugasMahasiswa extends MouseAdapter implements ActionList
     public void mouseClicked(MouseEvent e) {
         Object x = e.getSource();
         if (x.equals(tugas.getPilihTugas())){
-            if (app.getKelas(kelasId).getTugasList().size()>0){
+            if (app.getMahasiswa(userId).getKelas(kelasId).getTugasList().size()>0){
                 tugas.getJudul().setText(app.getMahasiswa(userId).getKelas(kelasId).getTugas(tugas.getPilihTugas().getSelectedIndex()).getJudulTugas());
                 if (app.getMahasiswa(userId).getTugasList().size()>0){
                     int result = -1;

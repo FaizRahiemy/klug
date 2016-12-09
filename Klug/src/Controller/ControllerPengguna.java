@@ -13,6 +13,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
@@ -21,12 +24,12 @@ import javax.swing.JOptionPane;
 public class ControllerPengguna implements ActionListener{
     private Pengguna akun = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int pengguna;
     private int jenis;
     
-    public ControllerPengguna(Application app, FileIO file, int userId, int pengguna){
+    public ControllerPengguna(Application app, IOFile file, int userId, int pengguna){
         akun = new Pengguna();
         this.app = app;
         this.file = file;
@@ -80,8 +83,36 @@ public class ControllerPengguna implements ActionListener{
                     prodi = akun.getProdi().getText();
                 }
                 if (pass.isEmpty() == false){
-                    if (pass.equals(pass1)){
-                        app.getOrang(pengguna).setPassword(pass);
+                    if (username.isEmpty() == false && nama.isEmpty() == false && nim.isEmpty() == false){
+                        if (pass.equals(pass1)){
+                            app.getOrang(pengguna).setPassword(pass);
+                            app.getOrang(pengguna).setUsername(username);
+                            app.getOrang(pengguna).setNama(nama);
+                            if (app.getOrang(pengguna) instanceof Mahasiswa){
+                                app.getMahasiswa(pengguna).setNim(nim);
+                                app.getMahasiswa(pengguna).setProdi(prodi);
+                            }else if (app.getOrang(pengguna) instanceof Dosen){
+                                app.getDosen(pengguna).setNip(nim);
+                                app.getDosen(pengguna).setKodeDosen(prodi);
+                            }else{
+                                app.getAdmin(pengguna).setNip(nim);
+                            }
+                            JOptionPane.showMessageDialog(akun, "Ubah data berhasil!");
+                            try {
+                                app.saveFile(app.getOrangList());
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                            akun.dispose();
+                            ControllerPilihPengguna dash = new ControllerPilihPengguna(app, file, userId);
+                        }else{
+                            JOptionPane.showMessageDialog(akun, "Password tidak sama!");
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(akun, "Semua kolom harus diisi!");
+                    }
+                }else{
+                    if (username.isEmpty() == false && nama.isEmpty() == false && nim.isEmpty() == false){
                         app.getOrang(pengguna).setUsername(username);
                         app.getOrang(pengguna).setNama(nama);
                         if (app.getOrang(pengguna) instanceof Mahasiswa){
@@ -93,39 +124,62 @@ public class ControllerPengguna implements ActionListener{
                         }else{
                             app.getAdmin(pengguna).setNip(nim);
                         }
-                        JOptionPane.showMessageDialog(akun, "Ubah data berhasil!");
+                        try {
+                            app.saveFile(app.getOrangList());
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
                         akun.dispose();
                         ControllerPilihPengguna dash = new ControllerPilihPengguna(app, file, userId);
-                    }else{
-                        JOptionPane.showMessageDialog(akun, "Password tidak sama!");
                     }
-                }else{
-                    app.getOrang(pengguna).setUsername(username);
-                    app.getOrang(pengguna).setNama(nama);
-                    if (app.getOrang(pengguna) instanceof Mahasiswa){
-                        app.getMahasiswa(pengguna).setNim(nim);
-                        app.getMahasiswa(pengguna).setProdi(prodi);
-                    }else if (app.getOrang(pengguna) instanceof Dosen){
-                        app.getDosen(pengguna).setNip(nim);
-                        app.getDosen(pengguna).setKodeDosen(prodi);
-                    }else{
-                        app.getAdmin(pengguna).setNip(nim);
-                    }
-                    akun.dispose();
-                    ControllerPilihPengguna dash = new ControllerPilihPengguna(app, file, userId);
                 }
             }else{
-                if (jen == 0){
-                    prodi = akun.getProdi().getText();
-                    app.createMahasiswa(username, pass, nama, nim, prodi);
-                }else if (jen == 1){
-                    prodi = akun.getProdi().getText();
-                    app.createDosen(username, pass, nama, nim, prodi);
-                }else{
-                    app.createAdmin(username, pass, nama, nim);
+                int res = -1;
+                for (int i = 0; i < app.getOrangList().size(); i++) {
+                    if (app.getOrang(i).getUsername().equals(username)){
+                        JOptionPane.showMessageDialog(akun, "Username sudah ada!");
+                        res = i;
+                        break;
+                    }
                 }
-                akun.dispose();
-                ControllerPilihPengguna dash = new ControllerPilihPengguna(app, file, userId);
+                if (res != -1){
+                    if (username.isEmpty() == false && nama.isEmpty() == false && nim.isEmpty() == false && pass.isEmpty() == false){
+                        if (pass.equals(pass1)){
+                            if (jen == 0){
+                                prodi = akun.getProdi().getText();
+                                try {
+                                    app.createMahasiswa(username, pass, nama, nim, prodi);
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
+                                }
+                            }else if (jen == 1){
+                                prodi = akun.getProdi().getText();
+                                try {
+                                    app.createDosen(username, pass, nama, nim, prodi);
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
+                                }
+                            }else{
+                                try {
+                                    app.createAdmin(username, pass, nama, nim);
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
+                                }
+                            }
+                            try {
+                                app.saveFile(app.getOrangList());
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                            akun.dispose();
+                            ControllerPilihPengguna dash = new ControllerPilihPengguna(app, file, userId);
+                        }else{
+                            JOptionPane.showMessageDialog(akun, "Password tidak sama!");
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(akun, "Semua kolom harus diisi!");
+                    }
+                }
             }
         }else{
             akun.dispose();

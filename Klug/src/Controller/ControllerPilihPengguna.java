@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import javax.swing.DefaultListModel;
@@ -26,10 +27,10 @@ import javax.swing.JOptionPane;
 public class ControllerPilihPengguna extends MouseAdapter implements ActionListener{
     private PilihTugasDosen pilihTugas = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     
-    public ControllerPilihPengguna(Application app, FileIO file, int userId){
+    public ControllerPilihPengguna(Application app, IOFile file, int userId){
         pilihTugas = new PilihTugasDosen();
         this.app = app;
         this.file = file;
@@ -94,6 +95,11 @@ public class ControllerPilihPengguna extends MouseAdapter implements ActionListe
                 int reply = JOptionPane.showConfirmDialog(pilihTugas, "Yakin akan hapus pengguna "+(app.getOrang(pilihTugas.getPilihTugas().getSelectedIndex()).getNama())+"?", "Yakin?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     app.getOrangList().remove(pilihTugas.getPilihTugas().getSelectedIndex());
+                    try {
+                        app.saveFile(app.getOrangList());
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     DefaultListModel modelList = new DefaultListModel();
                     pilihTugas.getPilihTugas().setModel(modelList);
                     for(int i=0;i<app.getOrangList().size();i++){

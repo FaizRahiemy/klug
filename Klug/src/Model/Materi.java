@@ -5,11 +5,13 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author faiz
  */
-public class Materi {
+public class Materi implements Serializable {
     private String judulMateri;
     private String isiMateri;
     private String dir;

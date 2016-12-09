@@ -27,11 +27,11 @@ import javax.swing.JOptionPane;
 public class ControllerMateriMahasiswa extends MouseAdapter implements ActionListener{
     private MateriMahasiswa materi = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     
-    public ControllerMateriMahasiswa(Application app, FileIO file, int userId, int kelasId){
+    public ControllerMateriMahasiswa(Application app, IOFile file, int userId, int kelasId){
         materi = new MateriMahasiswa();
         this.app = app;
         this.file = file;
@@ -91,7 +91,7 @@ public class ControllerMateriMahasiswa extends MouseAdapter implements ActionLis
     public void mouseClicked(MouseEvent e) {
         Object x = e.getSource();
         if (x.equals(materi.getPilihMateri())){
-            if (app.getKelas(kelasId).getMateriList().size()>0){
+            if (app.getMahasiswa(userId).getKelas(kelasId).getMateriList().size()>0){
                 materi.getJudul().setText(app.getMahasiswa(userId).getKelas(kelasId).getMateri(materi.getPilihMateri().getSelectedIndex()).getJudulMateri());
                 materi.getMateri().setText(app.getMahasiswa(userId).getKelas(kelasId).getMateri(materi.getPilihMateri().getSelectedIndex()).getIsiMateri());
             }

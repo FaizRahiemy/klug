@@ -29,11 +29,11 @@ import javax.swing.table.DefaultTableModel;
 public class ControllerTambahDosen extends MouseAdapter implements ActionListener{
     private TambahDosen hadir = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     
-    public ControllerTambahDosen(Application app, FileIO file, int userId, int kelasId){
+    public ControllerTambahDosen(Application app, IOFile file, int userId, int kelasId){
         hadir = new TambahDosen();
         this.app = app;
         this.file = file;
@@ -64,6 +64,11 @@ public class ControllerTambahDosen extends MouseAdapter implements ActionListene
                 }
             }
             app.getKelas(kelasId).setDosen(app.getDosen(res));
+            try {
+                app.saveFile(app.getKelasList());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             ControllerKelas pilKelMateri = new ControllerKelas(app,file,userId,kelasId);
             hadir.dispose();
         }else if(x.equals(hadir.getBtnBatal())){

@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 /**
@@ -23,12 +24,12 @@ import javax.swing.JOptionPane;
 public class ControllerQuizDosen extends MouseAdapter implements ActionListener{
     private QuizMahasiswa pilKel = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     private int quizId;
     
-    public ControllerQuizDosen(Application app, FileIO file, int userId, int kelasId, int quizId){
+    public ControllerQuizDosen(Application app, IOFile file, int userId, int kelasId, int quizId){
         pilKel = new QuizMahasiswa();
         this.app = app;
         this.file = file;
@@ -89,12 +90,22 @@ public class ControllerQuizDosen extends MouseAdapter implements ActionListener{
         if(x.equals(pilKel.getBtn_back())){
             app.getDosen(userId).getKelas(kelasId).getQuiz(quizId).setJudulQuiz(pilKel.getJudulQuiz().getText());
             app.getDosen(userId).getKelas(kelasId).getQuiz(quizId).getNilai().setJudulNilai("Quiz "+pilKel.getJudulQuiz().getText());
+            try {
+                app.saveFile(app.getKelasList());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             ControllerPilihQuizDosen quizMhs = new ControllerPilihQuizDosen(app,file,userId,kelasId);
             pilKel.dispose();
         }else if(x.equals(pilKel.getBtn_finish())){
             app.getDosen(userId).getKelas(kelasId).getQuiz(quizId).getSoal(pilKel.getPilihQuiz().getSelectedIndex()).setSoal(pilKel.getSoal().getText());
             for (int i=0;i<5;i++){
                 app.getDosen(userId).getKelas(kelasId).getQuiz(quizId).getSoal(pilKel.getPilihQuiz().getSelectedIndex()).getJawaban(i).setJawaban(pilKel.getJaw(i+1).getText());
+            }
+            try {
+                app.saveFile(app.getKelasList());
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
             JOptionPane.showMessageDialog(pilKel, "Soal "+(pilKel.getPilihQuiz().getSelectedIndex()+1)+" berhasil disimpan!");
         }else if(x.equals(pilKel.getBtn_tambah())){
@@ -105,6 +116,11 @@ public class ControllerQuizDosen extends MouseAdapter implements ActionListener{
             soal.createJawaban("Jawaban baru", false);
             soal.createJawaban("Jawaban baru", false);
             app.getDosen(userId).getKelas(kelasId).getQuiz(quizId).createSoal(soal);
+            try {
+                app.saveFile(app.getKelasList());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             DefaultListModel modelList = new DefaultListModel();
             pilKel.getPilihQuiz().setModel(modelList);
             for(int i=0;i<app.getDosen(userId).getKelas(kelasId).getQuiz(quizId).getSoalList().size();i++){
@@ -127,6 +143,11 @@ public class ControllerQuizDosen extends MouseAdapter implements ActionListener{
                 int reply = JOptionPane.showConfirmDialog(pilKel, "Yakin akan hapus soal "+(pilKel.getPilihQuiz().getSelectedIndex()+1)+"?", "Yakin?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     app.getDosen(userId).getKelas(kelasId).getQuiz(quizId).getSoalList().remove(pilKel.getPilihQuiz().getSelectedIndex());
+                    try {
+                        app.saveFile(app.getKelasList());
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     DefaultListModel modelList = new DefaultListModel();
                     pilKel.getPilihQuiz().setModel(modelList);
                     for(int i=0;i<app.getDosen(userId).getKelas(kelasId).getQuiz(quizId).getSoalList().size();i++){
@@ -161,7 +182,7 @@ public class ControllerQuizDosen extends MouseAdapter implements ActionListener{
     public void mousePressed(MouseEvent e) {
         Object x = e.getSource();
         if (x.equals(pilKel.getPilihQuiz())){
-            if (app.getKelas(kelasId).getQuiz(quizId).getSoalList().size()>0){
+            if (app.getDosen(userId).getKelas(kelasId).getQuiz(quizId).getSoalList().size()>0){
                 pilKel.getJudul().setText("Soal "+(pilKel.getPilihQuiz().getSelectedIndex()+1));
                 pilKel.getSoal().setText(app.getKelas(kelasId).getQuiz(quizId).getSoal(pilKel.getPilihQuiz().getSelectedIndex()).getSoal());
                 for(int i=0;i<5;i++){

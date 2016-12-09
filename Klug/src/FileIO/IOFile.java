@@ -11,7 +11,7 @@ import java.io.*;
  *
  * @author faiz
  */
-public class FileIO {
+public class IOFile {
     public Object loadFile(String filename) throws IOException {
         Object ob = null;
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {

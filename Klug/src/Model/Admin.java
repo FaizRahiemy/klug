@@ -5,11 +5,13 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author faiz
  */
-public class Admin extends Orang{
+public class Admin extends Orang implements Serializable {
     private String nip;
 
     public Admin(String username, String password, String nama, String nip) {

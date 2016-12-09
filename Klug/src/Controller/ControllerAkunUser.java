@@ -13,6 +13,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
@@ -21,10 +24,10 @@ import javax.swing.JOptionPane;
 public class ControllerAkunUser implements ActionListener{
     private AkunUser akun = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     
-    public ControllerAkunUser(Application app, FileIO file, int userId){
+    public ControllerAkunUser(Application app, IOFile file, int userId){
         akun = new AkunUser();
         this.app = app;
         this.file = file;
@@ -47,6 +50,11 @@ public class ControllerAkunUser implements ActionListener{
                 if (pass.equals(pass1)){
                     app.getOrang(userId).setPassword(pass);
                     JOptionPane.showMessageDialog(akun, "Ubah password berhasil!");
+                    try {
+                        app.saveFile(app.getOrangList());
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     akun.dispose();
                     if (app.getOrang(userId) instanceof Admin){
                         ControllerDashboardAdmin dash = new ControllerDashboardAdmin(app, file, userId);

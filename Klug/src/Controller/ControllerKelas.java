@@ -29,11 +29,11 @@ import javax.swing.table.DefaultTableModel;
 public class ControllerKelas extends MouseAdapter implements ActionListener{
     private MenuKelas hadir = null;
     private Application app;
-    private FileIO file;
+    private IOFile file;
     private int userId;
     private int kelasId;
     
-    public ControllerKelas(Application app, FileIO file, int userId, int kelasId){
+    public ControllerKelas(Application app, IOFile file, int userId, int kelasId){
         hadir = new MenuKelas();
         this.app = app;
         this.file = file;
@@ -73,6 +73,11 @@ public class ControllerKelas extends MouseAdapter implements ActionListener{
             app.getKelas(kelasId).setNamaMataKuliah(hadir.getNama().getText());
             app.getKelas(kelasId).setJadwal(hadir.getJadwal().getText());
             app.getKelas(kelasId).setRuang(hadir.getRuang().getText());
+            try {
+                app.saveFile(app.getKelasList());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             ControllerPilihKelas pilKelMateri = new ControllerPilihKelas(app,file,userId);
             hadir.dispose();
         }else if(x.equals(hadir.getBtnBatal())){
@@ -99,6 +104,11 @@ public class ControllerKelas extends MouseAdapter implements ActionListener{
                 }
                 for (int i=0;i<app.getKelas(kelasId).getMahasiswaList().size();i++){
                     tabel.addRow(new Object[]{app.getKelas(kelasId).getMahasiswa(i).getNim(), app.getKelas(kelasId).getMahasiswa(i).getNama(), "Hapus"});
+                }
+                try {
+                    app.saveFile(app.getKelasList());
+                } catch (IOException ex) {
+                    ex.printStackTrace();
                 }
             }
         }

@@ -5,13 +5,14 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author faiz
  */
-public class Kehadiran {
+public class Kehadiran implements Serializable {
     private Kehadiran kehadiran;
     private String nama;
     private String tanggal;
