@@ -65,7 +65,7 @@ public class ControllerTambahMahasiswa extends MouseAdapter implements ActionLis
             }
             int res2 = -1;
             for (int i=0;i<app.getKelas(kelasId).getMahasiswaList().size();i++){
-                if (app.getMahasiswa(res) == app.getKelas(kelasId).getMahasiswa(i)){
+                if (app.getMahasiswa(res).getNim().equals(app.getKelas(kelasId).getMahasiswa(i).getNim())){
                     res2 = i;
                 }
             }

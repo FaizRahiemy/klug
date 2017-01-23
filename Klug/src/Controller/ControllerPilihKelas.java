@@ -56,7 +56,8 @@ public class ControllerPilihKelas extends MouseAdapter implements ActionListener
                     pilihTugas.getJudul().setText(app.getKelas(i).getNamaMataKuliah());
                     pilihTugas.getTugas().setText("Dosen : "+app.getKelas(i).getDosen().getNama()+
                                                     "\nRuangan : "+app.getKelas(i).getRuang()+
-                                                    "\nJadwal : "+app.getKelas(i).getJadwal());
+                                                    "\nJadwal : "+app.getKelas(i).getJadwal()+
+                                                    "\nJumlah Mahasiswa : "+app.getKelas(i).getMahasiswaList().size());
                 }
             }
         }else{
@@ -79,8 +80,15 @@ public class ControllerPilihKelas extends MouseAdapter implements ActionListener
             ControllerKelas materidetail = new ControllerKelas(app, file, userId, pilihTugas.getPilihTugas().getSelectedIndex());
             pilihTugas.dispose();
         }else if(x.equals(pilihTugas.getBtn_tambah())){
+            int res = 0;
+            for (int i = 0; i < app.getOrangList().size(); i++) {
+                if (app.getOrang(i) instanceof Dosen){
+                    res = i;
+                    break;
+                }
+            }
             try {
-                app.createKelas("Baru", "Baru", "Baru", null);
+                app.createKelas("Baru", "Baru", "Baru", app.getDosen(res));
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -106,7 +114,8 @@ public class ControllerPilihKelas extends MouseAdapter implements ActionListener
                         pilihTugas.getJudul().setText(app.getKelas(0).getNamaMataKuliah());
                         pilihTugas.getTugas().setText("Dosen : "+app.getKelas(0).getDosen().getNama()+
                                                         "\nRuangan : "+app.getKelas(0).getRuang()+
-                                                        "\nJadwal : "+app.getKelas(0).getJadwal());
+                                                        "\nJadwal : "+app.getKelas(0).getJadwal()+
+                                                        "\nJumlah Mahasiswa : "+app.getKelas(0).getMahasiswaList().size());
                     }
                     pilihTugas.getPilihTugas().setSelectedIndex(0);
                     JOptionPane.showMessageDialog(pilihTugas, "Berhasil hapus pengguna!");
@@ -124,7 +133,8 @@ public class ControllerPilihKelas extends MouseAdapter implements ActionListener
                 pilihTugas.getJudul().setText(app.getKelas(pilihTugas.getPilihTugas().getSelectedIndex()).getNamaMataKuliah());
                 pilihTugas.getTugas().setText("Dosen : "+app.getKelas(pilihTugas.getPilihTugas().getSelectedIndex()).getDosen().getNama()+
                                                 "\nRuangan : "+app.getKelas(pilihTugas.getPilihTugas().getSelectedIndex()).getRuang()+
-                                                "\nJadwal : "+app.getKelas(pilihTugas.getPilihTugas().getSelectedIndex()).getJadwal());
+                                                "\nJadwal : "+app.getKelas(pilihTugas.getPilihTugas().getSelectedIndex()).getJadwal()+
+                                                "\nJumlah Mahasiswa : "+app.getKelas(pilihTugas.getPilihTugas().getSelectedIndex()).getMahasiswaList().size());
             }
         }
     }

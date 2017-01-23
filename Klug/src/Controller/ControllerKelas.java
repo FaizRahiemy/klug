@@ -50,15 +50,20 @@ public class ControllerKelas extends MouseAdapter implements ActionListener{
             hadir.getNama().setText(app.getKelas(kelasId).getNamaMataKuliah());
             hadir.getJadwal().setText(app.getKelas(kelasId).getJadwal());
             hadir.getRuang().setText(app.getKelas(kelasId).getRuang());
-            int idDos = 0;
+            int idDos = -1;
             for (int i=0;i<app.getOrangList().size();i++){
                 if (app.getOrang(i) instanceof Dosen){
-                    if (app.getDosen(i) == app.getKelas(kelasId).getDosen()){
+//                    System.out.println(app.getDosen(i).getNama()+" | "+app.getKelas(kelasId).getDosen().getNama());
+                    if (app.getDosen(i).getNip().equals(app.getKelas(kelasId).getDosen().getNip())){
                         idDos = i;
                     }
                 }
             }
-            hadir.getDosen().setText(app.getDosen(idDos).getNama());
+            if (idDos == -1){
+                hadir.getDosen().setText("BELUM ADA");
+            }else{
+                hadir.getDosen().setText(app.getDosen(idDos).getNama());
+            }
             for (int i=0;i<app.getKelas(kelasId).getMahasiswaList().size();i++){
                 tabel.addRow(new Object[]{app.getKelas(kelasId).getMahasiswa(i).getNim(), app.getKelas(kelasId).getMahasiswa(i).getNama(), "Hapus"});
             }

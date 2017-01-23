@@ -54,6 +54,8 @@ public class Pengguna extends javax.swing.JFrame implements View{
         nama = new javax.swing.JTextField();
         nim = new javax.swing.JTextField();
         prodi = new javax.swing.JTextField();
+        close3 = new javax.swing.JLabel();
+        close2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -147,6 +149,24 @@ public class Pengguna extends javax.swing.JFrame implements View{
         prodi.setFont(new java.awt.Font("Aller", 0, 24)); // NOI18N
         prodi.setForeground(new java.awt.Color(238, 95, 1));
 
+        close3.setBackground(new java.awt.Color(255, 255, 255));
+        close3.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
+        close3.setForeground(new java.awt.Color(255, 255, 255));
+        close3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                close3MouseReleased(evt);
+            }
+        });
+
+        close2.setBackground(new java.awt.Color(255, 255, 255));
+        close2.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
+        close2.setForeground(new java.awt.Color(255, 255, 255));
+        close2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                close2MouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout backgroundKlug1Layout = new javax.swing.GroupLayout(backgroundKlug1);
         backgroundKlug1.setLayout(backgroundKlug1Layout);
         backgroundKlug1Layout.setHorizontalGroup(
@@ -189,18 +209,26 @@ public class Pengguna extends javax.swing.JFrame implements View{
                             .addComponent(nama)
                             .addComponent(nim)
                             .addComponent(prodi))))
-                .addGap(155, 155, 155))
+                .addGap(93, 93, 93)
+                .addComponent(close2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(close3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         backgroundKlug1Layout.setVerticalGroup(
             backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundKlug1Layout.createSequentialGroup()
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(close1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                        .addComponent(close, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(backgroundKlug1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(close2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(close3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(close1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                            .addComponent(close, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(backgroundKlug1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -263,6 +291,14 @@ public class Pengguna extends javax.swing.JFrame implements View{
         System.exit(0);
     }//GEN-LAST:event_closeMouseReleased
 
+    private void close2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close2MouseReleased
+        this.setState(NilaiMahasiswa.ICONIFIED);
+    }//GEN-LAST:event_close2MouseReleased
+
+    private void close3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close3MouseReleased
+        System.exit(0);
+    }//GEN-LAST:event_close3MouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -307,6 +343,8 @@ public class Pengguna extends javax.swing.JFrame implements View{
     private javax.swing.JButton btn_simpan;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
+    private javax.swing.JLabel close2;
+    private javax.swing.JLabel close3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +23,7 @@ import javax.swing.JOptionPane;
  *
  * @author faiz
  */
-public class ControllerPengguna implements ActionListener{
+public class ControllerPengguna extends MouseAdapter implements ActionListener{
     private Pengguna akun = null;
     private Application app;
     private IOFile file;
@@ -35,6 +37,7 @@ public class ControllerPengguna implements ActionListener{
         this.file = file;
         this.userId = userId;
         this.pengguna = pengguna;
+        akun.getJenis().addMouseListener(this);
         akun.setResizable(false);
         if (pengguna != -1){
             akun.getJenis().setEnabled(false);
@@ -142,7 +145,8 @@ public class ControllerPengguna implements ActionListener{
                         break;
                     }
                 }
-                if (res != -1){
+                if (res == -1){
+                System.out.println("masuk");
                     if (username.isEmpty() == false && nama.isEmpty() == false && nim.isEmpty() == false && pass.isEmpty() == false){
                         if (pass.equals(pass1)){
                             if (jen == 0){
@@ -184,6 +188,29 @@ public class ControllerPengguna implements ActionListener{
         }else{
             akun.dispose();
             ControllerPilihPengguna dash = new ControllerPilihPengguna(app, file, userId);
+        }
+    }
+    
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        Object x = e.getSource();
+        if (x.equals(akun.getJenis())){
+            if (akun.getJenis().getSelectedIndex() == 0){
+//                System.out.println("masuk");
+                akun.getLabelNim().setText("NIM");
+                akun.getLabelProdi().setText("Program Studi");
+                akun.getLabelProdi().setVisible(true);
+                akun.getProdi().setVisible(true);
+            }else if (akun.getJenis().getSelectedIndex() == 1){
+                akun.getLabelNim().setText("NIP");
+                akun.getLabelProdi().setText("Kode Dosen");
+                akun.getLabelProdi().setVisible(true);
+                akun.getProdi().setVisible(true);
+            }else{
+                akun.getLabelNim().setText("NIP");
+                akun.getLabelProdi().setVisible(false);
+                akun.getProdi().setVisible(false);
+            }
         }
     }
 }

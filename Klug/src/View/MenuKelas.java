@@ -147,6 +147,7 @@ public class MenuKelas extends javax.swing.JFrame implements View{
         ruang.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
         ruang.setForeground(new java.awt.Color(238, 95, 1));
 
+        dosen.setEditable(false);
         dosen.setFont(new java.awt.Font("Aller", 0, 18)); // NOI18N
         dosen.setForeground(new java.awt.Color(238, 95, 1));
         dosen.setFocusCycleRoot(true);

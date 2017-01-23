@@ -11,6 +11,7 @@ import View.*;
 import FileIO.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -74,6 +75,19 @@ public class ControllerTambahDosen extends MouseAdapter implements ActionListene
         }else if(x.equals(hadir.getBtnBatal())){
             ControllerKelas pilKelMateri = new ControllerKelas(app,file,userId,kelasId);
             hadir.dispose();
+        }
+    }
+    
+    public void keyPressed(KeyEvent e){
+        if (e.getKeyCode() == e.VK_ENTER){
+            DefaultTableModel tabel = (DefaultTableModel) hadir.getMahasiswa().getModel();
+            for (int i=0;i<app.getOrangList().size();i++){
+                if (app.getOrang(i) instanceof Dosen){
+                    if (app.getDosen(i).getNama().equals(hadir.getNama().getText())){
+                        tabel.addRow(new Object[]{app.getDosen(i).getNip(), app.getDosen(i).getNama(), app.getDosen(i).getKodeDosen()});
+                    }
+                }
+            }
         }
     }
     

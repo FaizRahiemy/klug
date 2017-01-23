@@ -70,8 +70,12 @@ public class ControllerTugasDosen extends MouseAdapter implements ActionListener
     public void actionPerformed(ActionEvent e) {
         Object x = e.getSource();
         if(x.equals(tugasDos.getBtnSimpan())){
-            app.getDosen(userId).getKelas(kelasId).getTugas(tugasId).setJudulTugas(tugasDos.getJudul().getText());
-            app.getDosen(userId).getKelas(kelasId).getTugas(tugasId).setIsiTugas(tugasDos.getTugas().getText());
+            if (tugasId == -1){
+                app.getDosen(userId).getKelas(kelasId).createTugas(tugasDos.getJudul().getText(), tugasDos.getTugas().getText());
+            }else{
+                app.getDosen(userId).getKelas(kelasId).getTugas(tugasId).setJudulTugas(tugasDos.getJudul().getText());
+                app.getDosen(userId).getKelas(kelasId).getTugas(tugasId).setIsiTugas(tugasDos.getTugas().getText());
+            }
             try {
                 app.saveFile(app.getKelasList());
             } catch (IOException ex) {
